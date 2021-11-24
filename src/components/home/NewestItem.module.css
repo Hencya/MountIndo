@@ -1,0 +1,12 @@
+.blogContent {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 80%;
+  margin: 3rem 2rem;
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
+}
+
+.blogTitle {
+  padding: 2rem 0;
+}

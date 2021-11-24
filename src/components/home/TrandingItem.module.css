@@ -1,0 +1,53 @@
+.trandingContent {
+  padding-top: 2rem;
+  display: flex;
+}
+
+.postContent {
+  width: 100%;
+}
+
+.trandingContent .postContent > .postImage,
+.postTitle {
+  padding: 1rem 2rem;
+  position: relative;
+}
+
+.postInfo {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background: #28708f;
+  padding: 1rem;
+  position: absolute;
+  bottom: 0%;
+  left: 35%;
+  border-radius: 3rem;
+}
+
+.trandingContent .postContent > .postImage > div {
+  overflow: hidden;
+}
+
+.trandingContent .postContent > .postImage .img {
+  width: 100%;
+  transition: all 1s ease;
+}
+
+.trandingContent .postContent > .postImage .img:hover {
+  transform: scale(1.3);
+}
+
+.trandingContent .postContent > .postImage .postInfo span {
+  margin: 0 0.5rem;
+}
+
+.trandingContent .postContent a {
+  font-size: 1.5rem;
+}
+
+.trandingContentt .postContent .postTitle {
+  border-radius: 0;
+  padding: 0.7rem 1.5rem;
+  background-color: "#3086AC";
+}
