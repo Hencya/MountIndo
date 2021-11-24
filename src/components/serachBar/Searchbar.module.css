@@ -1,0 +1,23 @@
+.searchBar {
+  background-color: #5b5b5b;
+  width: fit-content;
+  margin: 2.5rem auto 4rem auto;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+.clear {
+  padding-right: 0.5rem;
+  cursor: pointer;
+}
+
+.input {
+  background-color: #5b5b5b;
+  outline: none;
+  border: none;
+  color: white;
+}
+
+.input::placeholder {
+  color: white;
+}

@@ -1,6 +1,6 @@
 import React from "react";
 import { Icon } from "@iconify/react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import logoNav from "../../assets/images/LogoNavbar.png";
 
 export default function Navbar() {
@@ -32,14 +32,14 @@ export default function Navbar() {
             <NavLink className="nav-link mx-3" to="/add-post" replace>
               Add Post
             </NavLink>
-            <NavLink className={`nav-link mx-1`} to="/" replace>
+            <Link className={`nav-link mx-1`} to="/" replace>
               <Icon
                 icon="healthicons:ui-user-profile"
                 color="#ccc"
                 width="45"
                 height="45"
               />
-            </NavLink>
+            </Link>
           </div>
         </div>
       </div>
