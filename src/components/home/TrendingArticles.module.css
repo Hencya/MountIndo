@@ -1,0 +1,15 @@
+.trandingtArticles {
+  padding-top: 6rem;
+}
+
+.container {
+  margin: 0 5vw;
+}
+
+@media only screen and (max-width: 1130px) {
+  .trandingContent .postContent > .postImage .postInfo {
+    left: 2rem !important;
+    bottom: 1rem !important;
+    border-radius: 0% !important;
+  }
+}

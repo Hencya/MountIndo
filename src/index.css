@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+html,
+body,
+#root > div {
+  margin: 0%;
+  font-family: "Inter", sans-serif;
+}
+
+nav {
+  font-size: 1.2em;
+  background-color: white;
+}
+
+.nav-link {
+  color: #5b5b5b !important;
+}
+
+.active {
+  color: #249c46 !important;
+  font-weight: 700;
+}
+
+.nav-link:hover {
+  color: #249c46 !important;
+}
+
+.navbar-nav .nav-link {
+  font-weight: bold;
+}
