@@ -11,7 +11,7 @@ export default function Searchbar(props) {
         <input
           type="text"
           placeholder="Search By Title "
-          className={`${styles.input} px-4 m-1`}
+          className={`${styles.input} `}
           value={value}
           onChange={handleSearchKey}
         />
@@ -21,7 +21,7 @@ export default function Searchbar(props) {
           </span>
         )}
         <button
-          className={`${styles.postBtn} btn text-white px-4 m-1 `}
+          className={`${styles.postBtn} btn text-white`}
           style={{ backgroundColor: "#249C46" }}
         >
           Find

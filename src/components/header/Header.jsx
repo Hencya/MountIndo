@@ -6,7 +6,7 @@ import styles from "./Header.module.css";
 export default function Header(props) {
   const { titleH2, titleH1 } = props;
   const quoteArray = props.quote.split(".");
-  console.log(quoteArray[0]);
+
   return (
     <header className={`${styles.header} text-center pt-5`}>
       <h2 style={{ color: "#2D7D9F", fontSize: "2rem" }}>{titleH1}</h2>

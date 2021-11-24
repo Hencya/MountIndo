@@ -8,6 +8,8 @@ import Header from "../../components/header/Header";
 import Navbar from "../../components/navbar/Navbar";
 import Searchbar from "../../components/serachBar/Searchbar";
 import { articleList } from "../../mockData";
+// css
+import "./Explorepage.css";
 
 export default function Explorepage() {
   const [articles, setArticles] = useState(articleList);

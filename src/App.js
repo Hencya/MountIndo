@@ -10,7 +10,7 @@ function App() {
       <Routes>
         <Route path="/" exact element={<Homepage />} />
         <Route path="/explore" exact element={<Explorepage />} />
-        <Route path="/article:id" exact element={<Articlepage />} />
+        <Route path="/article/:id" exact element={<Articlepage />} />
       </Routes>
     </BrowserRouter>
   );

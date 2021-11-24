@@ -15,7 +15,7 @@ export default function NewestItem() {
           <Link
             className={`btn text-white px-4 mt-2 mb-2 rounded-pill`}
             style={{ backgroundColor: "#3086AC" }}
-            to="/article:id"
+            to="/article/:id"
           >
             Check
           </Link>

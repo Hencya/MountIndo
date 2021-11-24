@@ -7,6 +7,7 @@ import styles from "./Articlelist.module.css";
 
 export default function Articlelist(props) {
   const { articles } = props;
+
   return (
     <div className={`${styles.articleList}`}>
       {articles.map((article) => (

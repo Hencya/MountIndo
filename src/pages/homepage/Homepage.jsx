@@ -1,4 +1,6 @@
+// library
 import React from "react";
+// component
 import Footer from "../../components/footer/Footer";
 import HomeSite from "../../components/home/HomeSite";
 import NewestArticles from "../../components/home/NewestArticles";

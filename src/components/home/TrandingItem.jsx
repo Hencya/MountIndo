@@ -39,7 +39,7 @@ export default function TrandingItem() {
           </div>
           <div className={`${styles.postTitle} `}>
             <Link
-              to="/article:id"
+              to="/article/:id"
               style={{ textDecoration: "none", color: "black" }}
             >
               Rinjani
@@ -51,7 +51,7 @@ export default function TrandingItem() {
               numquam architecto fugit. Eligendi quidem ipsam ducimus minus
               magni illum similique veniam tempore unde?
             </p>
-            <Link to="/article:id">
+            <Link to="/article/:id">
               <button
                 className={`${styles.postBtn} btn text-white px-4 mt-2 `}
                 style={{ backgroundColor: "#3086AC" }}

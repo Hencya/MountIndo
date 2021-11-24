@@ -1,4 +1,5 @@
-articleItem {
+.articleItem {
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
 }
@@ -17,7 +18,7 @@ articleItem {
   overflow: hidden;
   padding-right: 0.6rem;
   font-size: 0.8rem;
-  color: #a9a9a9;
+  color: #686666da;
 }
 
 .articleItemDesc::before {

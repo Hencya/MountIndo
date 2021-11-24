@@ -1,34 +1,40 @@
 // library;
 import React from "react";
 import { Link } from "react-router-dom";
+import { Icon } from "@iconify/react";
 // css
 import styles from "./Articleitem.module.css";
 // component
 import Chip from "./Chip";
 
-const ArticleItem = ({
-  article: {
-    description,
-    title,
-    createdAt,
-    authorName,
-    authorAvatar,
-    cover,
-    category,
-    id,
-  },
-}) => {
+export default function Articleitem(props) {
+  const { article } = props;
+
   return (
     <div className={`${styles.articleItem}`}>
-      <img className={`${styles.articleItemCover}`} src={cover} alt="cover" />
-      <Chip label={category} />
-      <h3 style={{ flex: 1, margin: "0.5rem 0 1rem 0" }}>{title}</h3>
-      <p className={`${styles.articleItemDesc}`}>{description}</p>
+      <img
+        className={`${styles.articleItemCover}`}
+        src={article.cover}
+        alt="cover"
+      />
+      <Chip label={article.category} />
+      <div className="d-flex justify-content-between bg-white w-100">
+        <h4 style={{ flex: 1, margin: "0.5rem 0 1rem 0" }}>{article.title}</h4>
+        <div className="text-center">
+          <Icon icon="ant-design:heart-filled" color="#ea2323" width="31" />
+          <p>123</p>
+        </div>
+      </div>
+      <p className={`${styles.articleItemDesc}`}>{article.description}</p>
       <footer className={`${styles.footer}`}>
         <div className={`${styles.articleItemAuthor}`}>
-          <img className={`${styles.avatar}`} src={authorAvatar} alt="avatar" />
+          <img
+            className={`${styles.avatar}`}
+            src={article.authorAvatar}
+            alt="avatar"
+          />
           <div>
-            <h6>{authorName}</h6>
+            <h6>{article.authorName}</h6>
             <p
               style={{
                 color: "#686666da",
@@ -36,18 +42,17 @@ const ArticleItem = ({
                 fontWeight: 600,
               }}
             >
-              {createdAt}
+              {article.createdAt}
             </p>
           </div>
         </div>
-        <Link className={`${styles.articleItemLink}`} to={`/article/${id}`}>
+        <Link
+          className={`${styles.articleItemLink} fs-4 fw-bold`}
+          to={`/article/${article.id}`}
+        >
           ➝
         </Link>
       </footer>
     </div>
   );
-};
-
-export default ArticleItem;
-
-// to={`/article/${id}`}
+}
