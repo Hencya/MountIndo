@@ -11,6 +11,7 @@ import Navbar from "../../components/navbar/Navbar";
 import { articleList } from "../../mockData";
 import Emptylist from "../../components/emptylist/Emptylist";
 import Comment from "../../components/explorepage/Comment";
+import CommentInput from "../../components/explorepage/CommentInput";
 
 export default function Articlepage() {
   const { id } = useParams();
@@ -61,6 +62,11 @@ export default function Articlepage() {
             <Comment />
             <Comment />
             <Comment />
+          </div>
+
+          <div className="py-5">
+            <h5 className="fw-bolder">Add Comment</h5>
+            <CommentInput />
           </div>
         </div>
       ) : (

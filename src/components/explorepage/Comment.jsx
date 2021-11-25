@@ -25,11 +25,19 @@ export default function Comment() {
         <p style={{ color: "#8F8D8D" }}>4 days ago</p>
       </div>
       <Icon
-        icon="bi:trash-fill"
+        icon="fa-solid:pen"
         color="#c4c4c4"
         width="18"
         height="18"
         className="align-self-end mb-3"
+        style={{ cursor: "pointer" }}
+      />
+      <Icon
+        icon="bi:trash-fill"
+        color="#c4c4c4"
+        width="18"
+        height="18"
+        className="align-self-end mb-3 ms-2"
         style={{ cursor: "pointer" }}
       />
     </div>
