@@ -11,7 +11,7 @@ export default function Articleitem(props) {
   const { article } = props;
 
   return (
-    <div className={`${styles.articleItem}`}>
+    <div className={`${styles.articleItem} m-3`}>
       <img
         className={`${styles.articleItemCover}`}
         src={article.cover}

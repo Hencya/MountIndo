@@ -9,12 +9,12 @@ import Navbar from "../../components/navbar/Navbar";
 
 export default function Homepage() {
   return (
-    <div className="HomePage">
+    <section className="HomePage">
       <Navbar />
       <HomeSite />
       <NewestArticles />
       <TrendingArticles />
       <Footer />
-    </div>
+    </section>
   );
 }

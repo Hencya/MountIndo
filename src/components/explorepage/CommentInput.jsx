@@ -1,7 +1,7 @@
 // library
 import React from "react";
 // css
-import styles from "./CommentInput.module.css";
+// import styles from "./CommentInput.module.css";
 
 export default function CommentInput() {
   return (
