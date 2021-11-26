@@ -12,6 +12,8 @@ export const articleList = [
     authorName: "John Doe",
     authorAvatar: avatar,
     createdAt: "June 03, 2021",
+    time: "2 minutes",
+    comments: 2,
     cover: cover,
   },
   {
@@ -24,6 +26,8 @@ export const articleList = [
     authorName: "John Doe",
     authorAvatar: avatar,
     createdAt: "June 03, 2021",
+    time: "3 minutes",
+    comments: 1,
     cover: cover,
   },
   {
@@ -36,6 +40,8 @@ export const articleList = [
     authorName: "John Doe",
     authorAvatar: avatar,
     createdAt: "June 03, 2021",
+    time: "5 minutes",
+    comments: 1,
     cover: cover,
   },
   {
@@ -48,6 +54,8 @@ export const articleList = [
     authorName: "John Doe",
     authorAvatar: avatar,
     createdAt: "June 03, 2021",
+    time: "3 minutes",
+    comments: 1,
     cover: cover,
   },
   {
@@ -60,6 +68,8 @@ export const articleList = [
     authorName: "John Doe",
     authorAvatar: avatar,
     createdAt: "June 03, 2021",
+    time: "1 minutes",
+    comments: 2,
     cover: cover,
   },
   {
@@ -72,6 +82,8 @@ export const articleList = [
     authorName: "John Doe",
     authorAvatar: avatar,
     createdAt: "June 03, 2021",
+    time: "1 minutes",
+    comments: 3,
     cover: cover,
   },
   {
@@ -84,6 +96,8 @@ export const articleList = [
     authorName: "John Doe",
     authorAvatar: avatar,
     createdAt: "June 03, 2021",
+    time: "2 minutes",
+    comments: 1,
     cover: cover,
   },
 ];

@@ -24,3 +24,10 @@
   opacity: 30%;
   z-index: -1;
 }
+
+.exploreBtn:hover {
+  background: transparent !important;
+  border-width: 3px;
+  border-color: #3086ac;
+  font-weight: bold !important;
+}
