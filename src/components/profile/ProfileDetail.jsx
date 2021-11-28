@@ -1,5 +1,9 @@
+// library
 import React from "react";
+// components
 import avatar from "../../assets/images/avatar.png";
+// css
+import styles from "./ProfileDetail.module.css";
 
 export default function ProfileDetail() {
   return (
@@ -13,7 +17,7 @@ export default function ProfileDetail() {
           <img src={avatar} alt="avatar" className="w-10 h-10 mt-2 mb-2" />
           <p className="card-text mt-2 mb-2">User 1</p>
           <button
-            className={` btn text-white px-4 mt-2 `}
+            className={`${styles.logOutBtn} btn text-white px-4 mt-2 `}
             style={{ backgroundColor: "red" }}
           >
             Logout

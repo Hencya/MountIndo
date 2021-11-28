@@ -1,0 +1,7 @@
+.logOutBtn:hover {
+  background: transparent !important;
+  border-width: 3px;
+  border-color: red;
+  color: red !important;
+  font-weight: bold !important;
+}

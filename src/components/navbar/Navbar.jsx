@@ -32,7 +32,7 @@ export default function Navbar() {
             <NavLink className="nav-link mx-3" to="/add-post" replace>
               Add Post
             </NavLink>
-            <Link className={`nav-link mx-1`} to="/" replace>
+            <Link className={`nav-link mx-1`} to="/profile" replace>
               <Icon
                 icon="healthicons:ui-user-profile"
                 color="#ccc"
