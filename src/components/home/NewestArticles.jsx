@@ -8,7 +8,9 @@ import styles from "../home/NewestArticles.module.css";
 // Cpmponent
 import NewestItem from "./NewestItem";
 
-export default function NewestArticles() {
+export default function NewestArticles(props) {
+  const { articles } = props;
+
   const options = {
     items: 3,
     loop: true,
@@ -35,14 +37,14 @@ export default function NewestArticles() {
     <section className={`${styles.newestArticles}`}>
       <div className="container">
         <div className={`d-flex justify-content-center pt-7`}>
-          <h3 className="font-nun text-dark left-border">Newest Articles</h3>
+          <h3 className="font-nun text-dark left-border fw-bold">
+            Newest Articles
+          </h3>
         </div>
         <OwlCarousel options={options}>
-          <NewestItem />
-          <NewestItem />
-          <NewestItem />
-          <NewestItem />
-          <NewestItem />
+          {articles.map((article) => (
+            <NewestItem article={article} />
+          ))}
         </OwlCarousel>
       </div>
     </section>

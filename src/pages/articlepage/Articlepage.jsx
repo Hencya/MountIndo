@@ -10,8 +10,8 @@ import Footer from "../../components/footer/Footer";
 import Navbar from "../../components/navbar/Navbar";
 import { articleList } from "../../mockData";
 import Emptylist from "../../components/emptylist/Emptylist";
-import Comment from "../../components/explorepage/Comment";
-import CommentInput from "../../components/explorepage/CommentInput";
+import Comment from "../../components/articlepage/Comment";
+import CommentInput from "../../components/articlepage/CommentInput";
 
 export default function Articlepage() {
   const { id } = useParams();

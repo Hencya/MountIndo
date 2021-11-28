@@ -9,6 +9,7 @@
 .clear {
   padding-right: 0.5rem;
   cursor: pointer;
+  color: white;
 }
 
 .input {

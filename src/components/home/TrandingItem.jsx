@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 // css
 import styles from "./TrandingItem.module.css";
 // assets
-import Blog1 from "../../assets/images/popular-post/m-blog-1.jpg";
+// import Blog1 from "../../assets/images/popular-post/m-blog-1.jpg";
 
-export default function TrandingItem() {
+export default function TrandingItem(props) {
+  const { article } = props;
   return (
     <div className={`${styles.trandingContent}`}>
       <div className={`${styles.posts}`}>
@@ -14,7 +15,7 @@ export default function TrandingItem() {
           <div className={`${styles.postImage}`}>
             <div>
               <img
-                src={Blog1}
+                src={article.cover}
                 alt="trandingBlog1"
                 className={`${styles.img}`}
               />
@@ -22,18 +23,24 @@ export default function TrandingItem() {
             <div className={`${styles.postInfo}`}>
               <span>
                 <i className="fas fa-user" style={{ color: "#C4C4C4" }}>
-                  &nbsp;&nbsp;User 1
+                  &nbsp;&nbsp;{article.authorName}
                 </i>
               </span>
               <span>
                 <i className="fas fa-calendar-alt" style={{ color: "#C4C4C4" }}>
-                  &nbsp;&nbsp;November 14, 2021
+                  &nbsp;&nbsp;{article.createdAt}
                 </i>
               </span>
               <span>
-                <i className="fas fa-comment " style={{ color: "#C4C4C4" }}>
-                  &nbsp;&nbsp;2 Coments
-                </i>
+                {article.comments > 1 ? (
+                  <i className="fas fa-comment " style={{ color: "#C4C4C4" }}>
+                    &nbsp;&nbsp;{article.comments} Comments
+                  </i>
+                ) : (
+                  <i className="fas fa-comment " style={{ color: "#C4C4C4" }}>
+                    &nbsp;&nbsp;{article.comments} Comment
+                  </i>
+                )}
               </span>
             </div>
           </div>
@@ -42,7 +49,7 @@ export default function TrandingItem() {
               to="/article/:id"
               style={{ textDecoration: "none", color: "black" }}
             >
-              Rinjani
+              {article.title}
             </Link>
             <p style={{ color: "#686666da" }}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
@@ -51,7 +58,7 @@ export default function TrandingItem() {
               numquam architecto fugit. Eligendi quidem ipsam ducimus minus
               magni illum similique veniam tempore unde?
             </p>
-            <Link to="/article/:id">
+            <Link to={`/article/${article.id}`}>
               <button
                 className={`${styles.postBtn} btn text-white px-4 mt-2 `}
                 style={{ backgroundColor: "#3086AC" }}

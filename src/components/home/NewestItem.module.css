@@ -10,3 +10,11 @@
 .blogTitle {
   padding: 2rem 0;
 }
+
+.linkBtn:hover {
+  background: transparent !important;
+  border-width: 3px;
+  border-color: #3086ac;
+  color: #3086ac !important;
+  font-weight: bold !important;
+}

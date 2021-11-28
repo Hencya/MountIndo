@@ -16,7 +16,7 @@ export default function HomeSite() {
             <p className="text-white fw-light">Let's Hike in</p>
             <h1 className="text-white fs-2">Amazing Mounts of Indonesia</h1>
             <Link
-              className={`btn text-white px-4 mt-2 rounded-pill`}
+              className={`${styles.exploreBtn} btn text-white px-4 mt-2 rounded-pill`}
               style={{ backgroundColor: "#3086AC" }}
               to="/explore"
             >
