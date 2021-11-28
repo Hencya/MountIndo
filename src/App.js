@@ -6,6 +6,7 @@ import Homepage from "./pages/homepage/Homepage";
 import Explorepage from "./pages/explorepage/Explorepage";
 import Articlepage from "./pages/articlepage/Articlepage";
 import AddArticle from "./pages/addpage/Addpage.jsx";
+import Loginpage from "./pages/loginpage/Loginpage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/explore" exact element={<Explorepage />} />
         <Route path="/article/:id" exact element={<Articlepage />} />
         <Route path="/add-post" exact element={<AddArticle />} />
+        <Route path="/login" exact element={<Loginpage />} />
       </Routes>
     </BrowserRouter>
   );

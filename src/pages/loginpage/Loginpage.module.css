@@ -1,0 +1,57 @@
+.hero {
+  background-image: url("../../assets/images/loginBg.jfif");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+  z-index: 2;
+}
+
+.overlay {
+  background: #1f576f;
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 30%;
+  z-index: -1;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 24px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.formLabel {
+  font-weight: bold;
+  float: left;
+}
+
+.formControl {
+  border-radius: 10px;
+  background-color: white !important;
+  border-color: #380074;
+}
+
+.loginCard {
+  width: 300px;
+  height: 400px;
+  opacity: 0.8;
+  margin: auto;
+  border-radius: 30px !important;
+}
+
+.button {
+  position: absolute;
+  left: 50%; /* position the left edge of the element at the middle of the parent */
+  transform: translate(-50%, -50%);
+  justify-content: center;
+  border-radius: 10px;
+  border-color: #ffffff;
+  width: 280px;
+  height: 36px;
+}
