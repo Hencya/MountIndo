@@ -1,0 +1,53 @@
+.articleItem {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.articleItemCover {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  margin-bottom: 0.5rem;
+}
+
+.articleItemDesc {
+  position: relative;
+  max-height: 50px;
+  overflow: hidden;
+  padding-right: 0.6rem;
+  font-size: 0.8rem;
+  color: #686666da;
+}
+
+.articleItemDesc::before {
+  position: absolute;
+  content: "...";
+  bottom: 0;
+  right: 0;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  justify-content: space-between;
+}
+
+.articleItemLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.articleItemAuthor {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 0.5rem;
+}
