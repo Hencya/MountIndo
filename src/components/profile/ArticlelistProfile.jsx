@@ -11,7 +11,9 @@ export default function ArticlelistProfile(props) {
   return (
     <div>
       <div className="d-flex justify-content-center">
-        <h3 className="font-nun text-dark left-border fw-bold">My Articles</h3>
+        <h3 className="font-nun text-dark left-border fw-bold mt-5">
+          My Articles
+        </h3>
       </div>
       <div className={`${styles.articleList}`}>
         {articles.map((article) => (

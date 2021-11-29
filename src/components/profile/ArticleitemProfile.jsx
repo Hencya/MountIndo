@@ -10,7 +10,7 @@ export default function ArticleitemProfile(props) {
   const { article } = props;
 
   return (
-    <div className={`${styles.articleItem} m-3`}>
+    <div className={`${styles.articleItem} m-3 mt-4`}>
       <img
         className={`${styles.articleItemCover}`}
         src={article.cover}
