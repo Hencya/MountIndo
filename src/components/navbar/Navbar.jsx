@@ -36,9 +36,15 @@ export default function Navbar() {
             <NavLink className="nav-link mx-3" to="/explore" replace>
               Explore
             </NavLink>
-            <NavLink className="nav-link mx-3" to="/add-post" replace>
-              Add Post
-            </NavLink>
+            {id === -1 ? (
+              <NavLink className="nav-link mx-3" to="/login" replace>
+                Add Post
+              </NavLink>
+            ) : (
+              <NavLink className="nav-link mx-3" to="/add-post" replace>
+                Add Post
+              </NavLink>
+            )}
             <Link className={`nav-link mx-1`} to="/profile" replace>
               {id === -1 ? (
                 <Icon

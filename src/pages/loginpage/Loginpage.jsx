@@ -105,9 +105,9 @@ export default function Loginpage() {
                   <LoadingSmall />
                 ) : (
                   <button
-                    className={`${styles.button} btn text-white px-4 mt-4 `}
+                    className={`${styles.button} btn text-white mt-4 `}
                     type="submit"
-                    style={{ backgroundColor: "#3086AC" }}
+                    style={{ backgroundColor: "#249C46" }}
                   >
                     Log In
                   </button>
