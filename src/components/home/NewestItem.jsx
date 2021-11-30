@@ -10,7 +10,12 @@ export default function NewestItem(props) {
   return (
     <div className="item">
       <div className={`${styles.blogContent}`}>
-        <img src={article.cover} id="blogPost" alt="blogPost" />
+        <img
+          src={article.image}
+          className={styles.image}
+          id="articleNewestPost"
+          alt="articleNewestPost"
+        />
         <div className={`${styles.blogTitle}`}>
           <p className="h3 text-black">{article.title}</p>
           <Link
@@ -21,7 +26,7 @@ export default function NewestItem(props) {
             Check
           </Link>
           <span className="d-block" style={{ color: "#686666da" }}>
-            {article.time}
+            {article.created_at}
           </span>
         </div>
       </div>

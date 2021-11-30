@@ -10,7 +10,7 @@ import NewestItem from "./NewestItem";
 
 export default function NewestArticles(props) {
   const { articles } = props;
-
+  console.log(articles);
   const options = {
     items: 3,
     loop: true,
@@ -20,7 +20,7 @@ export default function NewestArticles(props) {
     autoplayTimeout: 3000,
     responsive: {
       0: {
-        items: 1,
+        items: 0,
       },
       320: {
         items: 1,

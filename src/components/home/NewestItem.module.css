@@ -18,3 +18,9 @@
   color: #3086ac !important;
   font-weight: bold !important;
 }
+
+.image {
+  width: 300px;
+  height: 233px;
+  object-fit: cover;
+}

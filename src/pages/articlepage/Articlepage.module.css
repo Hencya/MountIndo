@@ -1,3 +1,6 @@
+.articlePage {
+  height: 100vw;
+}
 .articleWrap {
   max-width: 1232px;
   margin: 0 auto;
