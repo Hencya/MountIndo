@@ -10,13 +10,12 @@ export const LOGIN = gql`
       avatar
       id
       username
-      id_article
       fullname
     }
   }
 `;
 
-export const GET_ARTICLE = gql`
+export const GET_ALL_ARTICLES = gql`
   query MyQuery {
     MountIndo_Article {
       author_avatar
@@ -24,7 +23,7 @@ export const GET_ARTICLE = gql`
       created_at
       description
       id
-      id_comment
+      id_user
       image
       like
       title
@@ -38,7 +37,6 @@ export const GET_USER = gql`
       avatar
       fullname
       id
-      id_article
       username
     }
   }

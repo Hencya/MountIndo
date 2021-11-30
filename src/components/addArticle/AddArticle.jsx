@@ -1,5 +1,7 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 // library
 import React, { useEffect, useState } from "react";
+import moment from "moment";
 import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
 // css
@@ -12,11 +14,17 @@ import LoadingSmall from "../loading/LoadingSmall";
 import useInsertArticle from "../../hooks/useInsertArticle";
 import useGetUserById from "../../hooks/useGetUserById";
 import Emptylist from "../emptylist/Emptylist";
-import UseValidateForm from "../../hooks/useValidation";
+import useValidateForm from "../../hooks/useValidation";
+import Loading from "../loading/Loading";
 
 export default function AddArticle() {
-  const authorId = useSelector((state) => state.auth.userId);
   const navigate = useNavigate();
+
+  const { validateForm } = useValidateForm();
+  const authorId = useSelector((state) => state.auth.userId);
+  const isLogin = useSelector((state) => state.auth.login);
+  const author_avatar = useSelector((state) => state.auth.avatar);
+  const author_name = useSelector((state) => state.auth.fullname);
 
   const [loadingUpload, setLoadingUpload] = useState(false);
   const [isUpload, setIsUpload] = useState(false);
@@ -31,19 +39,25 @@ export default function AddArticle() {
     console.log(errorGetUserById);
   }
 
+  if (loadingGetUserById) {
+    <Loading />;
+  }
+
+  const createdAt = moment().format("LL");
   const initialValue = {
     title: "",
     description: "",
     image: "",
-    author_avatar: "",
-    author_name: "",
+    id_user: authorId,
+    author_avatar: author_avatar,
+    author_name: author_name,
+    createdAt: createdAt,
   };
 
   const basedError = {
     title: "",
     description: "",
     image: "",
-    login: "",
   };
 
   const [errorMessage, setErrorMessage] = useState(basedError);
@@ -52,15 +66,13 @@ export default function AddArticle() {
   const onBlur = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    const messages = UseValidateForm(name, value);
+    const messages = validateForm(name, value, undefined);
     setErrorMessage({ ...errorMessage, ...messages });
   };
 
   const onChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    console.log("ini nama ", name);
-    console.log("ini value ", value);
     setFormNewArticle({ ...formNewArticle, [name]: value });
   };
 
@@ -68,7 +80,10 @@ export default function AddArticle() {
     if (app) {
       const file = e.target.files[0];
       const storageRef = getStorage();
-      const fileRef = ref(storageRef, file.name);
+      const fileRef = ref(
+        storageRef,
+        `${author_name}-images-article-${file.name}`
+      );
       setLoadingUpload(true);
       uploadBytes(fileRef, file).then(() => {
         getDownloadURL(fileRef)
@@ -83,57 +98,64 @@ export default function AddArticle() {
     }
   };
 
+  const validateOnSubmit = () => {
+    setErrorMessage(() => {
+      const errorMessageArr = Object.keys(errorMessage).map((key) => {
+        if (formNewArticle[key] === "") {
+          const err = `${
+            key.charAt(0).toUpperCase() + key.slice(1)
+          } Field Cannot be Empty`;
+
+          return { [key]: err };
+        }
+        return { [key]: "" };
+      });
+      const updatedErrorMessage = errorMessageArr.reduce(
+        (previousValue, currentValue) => {
+          return { ...previousValue, ...currentValue };
+        },
+        {}
+      );
+      return updatedErrorMessage;
+    });
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
-    const messages = UseValidateForm(undefined, undefined, formNewArticle);
-    setErrorMessage({ ...errorMessage, ...messages });
-    const invalidFields = Object.keys(messages).filter(
-      (key) => messages[key] !== ""
+    const validField = Object.keys(formNewArticle).filter(
+      (key) => formNewArticle[key] !== ""
     );
-    if (invalidFields.length === 0) {
-      insertArticle({ variables: { ...formNewArticle } });
+    if (validField.length < 3) {
+      validateOnSubmit();
+    } else {
+      insertArticle({
+        variables: {
+          description: formNewArticle.description,
+          title: formNewArticle.title,
+          author_name: formNewArticle.author_name,
+          author_avatar: formNewArticle.author_avatar,
+          image: formNewArticle.image,
+          created_at: formNewArticle.createdAt,
+          id_user: formNewArticle.id_user,
+        },
+      });
       navigate("/profile");
     }
   };
 
-  useEffect(() => {
-    if (!loadingInsertArticle && !loadingGetUserById) {
-      if (!dataUser) {
-        setErrorMessage({
-          ...errorMessage,
-          login: "You Must Login First",
-        });
-      } else if (dataUser) {
-        setFormNewArticle({
-          ...formNewArticle,
-          author_avatar: dataUser.MountIndo_User_by_pk.avatar,
-          author_name: dataUser.MountIndo_User_by_pk.fullname,
-        });
-      }
-    }
-  }, [
-    dataUser,
-    loadingInsertArticle,
-    errorMessage,
-    loadingGetUserById,
-    formNewArticle,
-  ]);
-
-  console.log(errorMessage);
-
   return (
     <div className={`${styles.newArticle} mb-5`}>
-      {errorMessage.login ? (
+      {!isLogin ? (
         <>
           <h5 className="text-danger text-center fw-bol mt-4">
-            {errorMessage.login}
+            You Must Login First
           </h5>
           <Emptylist />
         </>
       ) : (
         <>
           <h3 className="text-center mt-5">Add New Article</h3>
-          <form className="mt-5" onSubmit={onSubmit}>
+          <form className="mt-5 px-5" onSubmit={onSubmit}>
             <div className="form-floating">
               <textarea
                 className="form-control"
@@ -204,16 +226,16 @@ export default function AddArticle() {
                 )}
               </div>
             )}
+            <div class="d-grid gap-2">
+              <button
+                className={`btn text-white px-5 d-flex justify-content-center`}
+                style={{ backgroundColor: "#5B5B5B" }}
+                type="submit"
+              >
+                {loadingInsertArticle ? <LoadingSmall /> : "Submit Post"}
+              </button>
+            </div>
           </form>
-          <div class="d-grid gap-2">
-            <button
-              className={`btn text-white px-4 d-flex justify-content-center`}
-              style={{ backgroundColor: "#5B5B5B" }}
-              type="submit"
-            >
-              Submit Post
-            </button>
-          </div>
         </>
       )}
     </div>

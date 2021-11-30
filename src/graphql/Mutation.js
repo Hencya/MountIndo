@@ -7,6 +7,8 @@ export const INSERT_ARTICLE = gql`
     $author_avatar: String!
     $image: String!
     $title: String!
+    $created_at: String!
+    $id_user: Int!
   ) {
     insert_MountIndo_Article(
       objects: {
@@ -15,6 +17,8 @@ export const INSERT_ARTICLE = gql`
         author_avatar: $author_avatar
         image: $image
         title: $title
+        created_at: $created_at
+        id_user: $id_user
       }
     ) {
       affected_rows

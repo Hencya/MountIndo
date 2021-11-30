@@ -1,3 +1,5 @@
+import * as firebase from "firebase/app";
+import "firebase/storage";
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -5,12 +7,13 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyA86QMXvlb7Ta7YA__PiHg38hovUxrwj3E",
-  authDomain: "mountindo-73938.firebaseapp.com",
-  projectId: "mountindo-73938",
-  storageBucket: "mountindo-73938.appspot.com",
-  messagingSenderId: "571981879262",
-  appId: "1:571981879262:web:71e709efc3da49b2b5ef4f",
+  apiKey: "AIzaSyDLVwhTO9cLmgCqYD9lN5UvAmFJ6LzZTYo",
+  authDomain: "mountindo-2-2298f.firebaseapp.com",
+  projectId: "mountindo-2-2298f",
+  storageBucket: "mountindo-2-2298f.appspot.com",
+  messagingSenderId: "928153527022",
+  appId: "1:928153527022:web:4f9875f1016c89974289ff",
+  measurementId: "G-VM07C55P2N",
 };
 
 // Initialize Firebase
