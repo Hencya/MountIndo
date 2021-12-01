@@ -9,24 +9,41 @@ import TrendingArticles from "../../components/home/TrendingArticles";
 import Loading from "../../components/loading/Loading";
 import Navbar from "../../components/navbar/Navbar";
 import useGetNewestArticles from "../../hooks/useGetNewestArticles";
-import { articleList } from "../../mockData";
+import useGetTrandingArticles from "../../hooks/useGetTrandingArticles";
 
 export default function Homepage() {
-  const [articles, setArticles] = useState(articleList);
-
+  const [trandingArticles, setTrandingArticles] = useState([]);
   const [newestArticles, setNewestArticles] = useState([]);
 
   const { dataNewestArticles, loadingNewestArticles, errorNewestArticles } =
     useGetNewestArticles();
+  const {
+    dataGetTrandingArticles,
+    loadingGetTrandingArticles,
+    errorGetTrandingArticles,
+  } = useGetTrandingArticles();
 
-  if (errorNewestArticles) {
+  if (errorNewestArticles || errorGetTrandingArticles) {
+    console.log(errorGetTrandingArticles);
     console.log(errorNewestArticles);
   }
 
   useEffect(() => {
-    if (!loadingNewestArticles)
-      setNewestArticles(dataNewestArticles.MountIndo_Article);
-  }, [dataNewestArticles, loadingNewestArticles]);
+    if (!loadingNewestArticles && !loadingGetTrandingArticles) {
+      if (dataNewestArticles) {
+        setNewestArticles(dataNewestArticles?.MountIndo_Article);
+      }
+
+      if (dataGetTrandingArticles) {
+        setTrandingArticles(dataGetTrandingArticles.MountIndo_Article);
+      }
+    }
+  }, [
+    dataNewestArticles,
+    loadingNewestArticles,
+    loadingGetTrandingArticles,
+    dataGetTrandingArticles,
+  ]);
 
   return (
     <section className="HomePage">
@@ -34,7 +51,7 @@ export default function Homepage() {
       <HomeSite />
       {!loadingNewestArticles ? (
         <>
-          {!articles.length ? (
+          {newestArticles.length === 0 ? (
             <Emptylist message={"Articles Don't Exist"} />
           ) : (
             <NewestArticles articles={newestArticles} />
@@ -43,12 +60,18 @@ export default function Homepage() {
       ) : (
         <Loading />
       )}
-
-      {!articles.length ? (
-        <Emptylist message={"Articles Don't Exist"} />
+      {!loadingGetTrandingArticles ? (
+        <>
+          {trandingArticles.length === 0 ? (
+            <Emptylist message={"Articles Don't Exist"} />
+          ) : (
+            <TrendingArticles articles={trandingArticles} />
+          )}
+        </>
       ) : (
-        <TrendingArticles articles={articles} />
+        <Loading />
       )}
+
       <Footer />
     </section>
   );

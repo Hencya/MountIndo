@@ -125,3 +125,19 @@ export const GET_ALL_TABLE_LIKE = gql`
     }
   }
 `;
+
+export const GET_TRANDING_ARTICLES = gql`
+  query MyQuery {
+    MountIndo_Article(limit: 3, order_by: { like: desc }) {
+      title
+      author_avatar
+      author_name
+      created_at
+      description
+      id
+      id_user
+      image
+      like
+    }
+  }
+`;

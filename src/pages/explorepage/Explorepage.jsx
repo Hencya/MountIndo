@@ -52,12 +52,8 @@ export default function Explorepage() {
     console.log(errorGetAllArticles);
   }
 
-  console.log("articles", articles);
-  console.log("get articles", dataAllArticles);
-  console.log("get articles 2", dataAllArticles?.MountIndo_Article);
-
-  const titleH1 = "Find Your New Journey";
-  const titleH2 = "Mountain";
+  const titleH2 = "Find Your New Journey";
+  const titleH1 = "Mountain";
   const quote =
     "Jangan mengambil apa pun selain gambar, Jangan meninggalkan apa pun selain jejak. Jangan membunuh apa pun selain waktu";
 
@@ -78,12 +74,11 @@ export default function Explorepage() {
           ) : (
             <Articlelist articles={articles} />
           )}
+          <Footer />
         </>
       ) : (
         <LoadingSearching />
       )}
-
-      <Footer />
     </div>
   );
 }

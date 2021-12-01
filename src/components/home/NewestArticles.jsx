@@ -10,7 +10,7 @@ import NewestItem from "./NewestItem";
 
 export default function NewestArticles(props) {
   const { articles } = props;
-  console.log(articles);
+
   const options = {
     items: 3,
     loop: true,

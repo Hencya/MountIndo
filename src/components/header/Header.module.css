@@ -1,0 +1,11 @@
+@media (max-width: 540px) {
+  .quote {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 378px) {
+  .quote {
+    font-size: 11px;
+  }
+}

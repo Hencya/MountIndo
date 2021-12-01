@@ -45,15 +45,12 @@ export default function Articlepage() {
     subscribeLikes,
   } = useGetArticleById(id);
   // like table
-  const { dataGetTableLike, loadingGetTableLike, errorGetTableLike } =
-    useGetLikeTableByUserAndArticleId(currentUserId, id);
   const { insertTableLike, loadingInsertTableLike, errorInsertATableLike } =
     useInsertLikeTable();
   const { deleteTableLike, loadingDeleteTableLike, errorDeleteTableLike } =
     useDeleteLikeTable();
 
   const [isLiked, setIsLiked] = useState(false);
-  const [tableLike, setTableLike] = useState();
   const [commentList, setCommentList] = useState([]);
   const [article, setArticle] = useState({});
 
@@ -63,7 +60,6 @@ export default function Articlepage() {
     errorLikeSubs ||
     errorAllComments ||
     errorGetArticleById ||
-    errorGetTableLike ||
     errorDeleteTableLike ||
     errorInsertATableLike
   ) {
@@ -72,7 +68,6 @@ export default function Articlepage() {
     console.log(errorUpdateLikeArticle);
     console.log(errorAllComments);
     console.log(errorGetArticleById);
-    console.log(errorGetTableLike);
     console.log(errorDeleteTableLike);
     console.log(errorInsertATableLike);
   }
@@ -85,15 +80,11 @@ export default function Articlepage() {
         !loadingAllComments &&
         !loadingUpdateLikeArticle &&
         !loadingLikeSubs &&
-        !loadingGetTableLike &&
         !loadingInsertTableLike &&
         !loadingDeleteTableLike
       ) {
         if (isLogin) {
           subscribeLikes();
-          if (dataGetTableLike) {
-            setTableLike(dataGetTableLike?.MountIndo_Like);
-          }
         }
         if (dataGetArticleById) {
           setArticle(dataGetArticleById?.MountIndo_Article_by_pk);
@@ -118,23 +109,12 @@ export default function Articlepage() {
     subscribeLikes,
     isLogin,
     dataLikeSubs,
-    loadingGetTableLike,
     loadingDeleteTableLike,
     loadingInsertTableLike,
-    dataGetTableLike,
   ]);
-
-  console.log("Like", tableLike);
-  // console.log(
-  //   "article Likes",
-  //   dataGetArticleById?.MountIndo_Article_by_pk.like
-  // );
-  console.log("ini likes before click", dataLikeSubs?.MountIndo_Article_by_pk);
-  // console.log("subs likes click", dataLikeSubs?.MountIndo_Article_by_pk.like);
 
   const onClickLike = () => {
     const likes = dataLikeSubs?.MountIndo_Article_by_pk.like;
-    console.log("ini likes after click", likes);
 
     if (isLiked) {
       setIsLiked(false);
