@@ -73,3 +73,17 @@ export const GET_NEWEST_ARTICLES = gql`
     }
   }
 `;
+
+export const GET_COMMENTS_BY_ARTICLE_ID = gql`
+  query MyQuery($id_article: Int!) {
+    MountIndo_Comment(where: { id_article: { _eq: $id_article } }) {
+      commentar
+      created_at
+      id
+      id_article
+      id_user
+      author_avatar
+      author_name
+    }
+  }
+`;

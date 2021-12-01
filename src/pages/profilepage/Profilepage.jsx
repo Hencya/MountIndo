@@ -1,6 +1,6 @@
 // library
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 // component
 import Emptylist from "../../components/emptylist/Emptylist";
 import Footer from "../../components/footer/Footer";

@@ -9,6 +9,7 @@ export const INSERT_ARTICLE = gql`
     $title: String!
     $created_at: String!
     $id_user: Int!
+    $like: Int!
   ) {
     insert_MountIndo_Article(
       objects: {
@@ -19,6 +20,7 @@ export const INSERT_ARTICLE = gql`
         title: $title
         created_at: $created_at
         id_user: $id_user
+        like: $like
       }
     ) {
       affected_rows

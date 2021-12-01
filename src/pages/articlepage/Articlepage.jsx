@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
+import { useSelector } from "react-redux";
 // css
 import styles from "./Articlepage.module.css";
 // components
@@ -13,6 +14,8 @@ import Comment from "../../components/articlepage/Comment";
 import CommentInput from "../../components/articlepage/CommentInput";
 import useGetArticleById from "../../hooks/useGetArticleById";
 import Loading from "../../components/loading/Loading";
+// hook
+import useGetCommentsByArticleId from "../../hooks/useGetCommentsByArticleId";
 
 export default function Articlepage() {
   // const [article, setArticle] = useState(null);
@@ -25,9 +28,16 @@ export default function Articlepage() {
   // }, [id]);
 
   const { id } = useParams();
+  const currentUserId = useSelector((state) => state.auth.userId);
+
+  const { dataAllComments, loadingAllComments, errorAllComments } =
+    useGetCommentsByArticleId(id);
   const { dataGetArticleById, loadingGetArticleById, errorGetArticleById } =
     useGetArticleById(id);
 
+  console.log(dataAllComments);
+
+  const [commentList, setCommentList] = useState([]);
   const [article, setArticle] = useState({});
 
   if (errorGetArticleById) {
@@ -35,19 +45,31 @@ export default function Articlepage() {
   }
 
   useEffect(() => {
-    if (!loadingGetArticleById) {
+    if (!loadingGetArticleById && !loadingAllComments) {
       if (dataGetArticleById) {
         setArticle(dataGetArticleById?.MountIndo_Article_by_pk);
       }
-    } else if (loadingGetArticleById) {
-      <Loading />;
+
+      if (dataAllComments) {
+        setCommentList(dataAllComments?.MountIndo_Comment);
+      }
     }
-  }, [dataGetArticleById, loadingGetArticleById]);
+  }, [
+    dataGetArticleById,
+    loadingGetArticleById,
+    dataAllComments,
+    loadingAllComments,
+  ]);
+
+  if (errorAllComments || errorGetArticleById) {
+    console.log(errorAllComments);
+    console.log(errorGetArticleById);
+  }
 
   return (
     <section className={styles.articlePage}>
       <Navbar />
-      {loadingGetArticleById ? (
+      {loadingGetArticleById || loadingAllComments ? (
         <div className="">
           <Loading />
         </div>
@@ -89,10 +111,10 @@ export default function Articlepage() {
               </div>
 
               <div className="py-5">
-                <h5 className="fw-bolder">Komentar (3)</h5>
-                <Comment />
-                <Comment />
-                <Comment />
+                <h5 className="fw-bolder">{`Komentar (${commentList.length})`}</h5>
+                {commentList.map((comment) => (
+                  <Comment currentUserId={currentUserId} comment={comment} />
+                ))}
               </div>
 
               <div className="py-5">

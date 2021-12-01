@@ -48,6 +48,7 @@ export default function AddArticle() {
     title: "",
     description: "",
     image: "",
+    like: 0,
     id_user: authorId,
     author_avatar: author_avatar,
     author_name: author_name,
@@ -137,6 +138,7 @@ export default function AddArticle() {
           image: formNewArticle.image,
           created_at: formNewArticle.createdAt,
           id_user: formNewArticle.id_user,
+          like: formNewArticle.like,
         },
       });
       navigate("/profile");
