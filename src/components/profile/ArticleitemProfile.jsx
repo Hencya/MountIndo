@@ -13,7 +13,7 @@ export default function ArticleitemProfile(props) {
     <div className={`${styles.articleItem} m-3 mt-4`}>
       <img
         className={`${styles.articleItemCover}`}
-        src={article.cover}
+        src={article.image}
         alt="cover"
       />
       <div className="d-flex justify-content-between bg-white w-100">
