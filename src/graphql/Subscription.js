@@ -1,3 +1,4 @@
+// library
 import { gql } from "@apollo/client";
 
 export const SUBSCRIPTION_ARTICLES_LIKE = gql`

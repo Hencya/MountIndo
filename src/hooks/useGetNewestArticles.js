@@ -1,4 +1,6 @@
+// library
 import { useQuery } from "@apollo/client";
+// graphql
 import { GET_NEWEST_ARTICLES } from "../graphql/Query";
 
 export default function useGetNewestArticles() {

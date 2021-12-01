@@ -8,9 +8,9 @@ import styles from "./Loginpage.module.css";
 import logoLogin from "../../assets/images/LogoNavbar.png";
 // components
 import useGetUsernameAndPassword from "../../hooks/useGetUsernamePasswordUser";
+import LoadingSmall from "../../components/Loading/LoadingSmall";
 // redux
 import { login } from "../../config/redux/LoginSlice";
-import LoadingSmall from "../../components/loading/LoadingSmall";
 
 export default function Loginpage() {
   const navigate = useNavigate();

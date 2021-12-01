@@ -4,7 +4,7 @@ import OwlCarousel from "react-owl-carousel2";
 import "react-owl-carousel2/lib/styles.css";
 import "react-owl-carousel2/src/owl.theme.default.css";
 // css
-import styles from "../home/NewestArticles.module.css";
+import styles from "../Home/NewestArticles.module.css";
 // Cpmponent
 import NewestItem from "./NewestItem";
 

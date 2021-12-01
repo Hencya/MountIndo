@@ -1,4 +1,6 @@
+// library
 import { useQuery } from "@apollo/client";
+// graphql
 import { GET_COMMENTS_BY_ARTICLE_ID } from "../graphql/Query";
 
 export default function useGetCommentsByArticleId(id) {

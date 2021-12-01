@@ -1,10 +1,10 @@
 // library
 import React from "react";
 // component
-import AddArticle from "../../components/addArticle/AddArticle";
-import Footer from "../../components/footer/Footer";
-import Header from "../../components/header/Header";
-import Navbar from "../../components/navbar/Navbar";
+import PostArticle from "../../components/PostArticle/PostArticle";
+import Footer from "../../components/Footer/Footer";
+import Header from "../../components/Header/Header";
+import Navbar from "../../components/Navbar/Navbar";
 // css
 import styles from "./Addpage.module.css";
 
@@ -18,7 +18,7 @@ export default function Addpage() {
     <section className={styles.AddArticlePage}>
       <Navbar />
       <Header titleH1={titleH1} titleH2={titleH2} quote={quote} />
-      <AddArticle />
+      <PostArticle />
       <Footer />
     </section>
   );

@@ -1,4 +1,6 @@
+// library
 import { useQuery } from "@apollo/client";
+// graphql
 import { GET_USER } from "../graphql/Query";
 
 export default function useGetUserById(id) {

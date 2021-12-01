@@ -1,4 +1,6 @@
+// library
 import { useQuery } from "@apollo/client";
+// library
 import { GET_ARTICLE_BY_ID } from "../graphql/Query";
 import { SUBSCRIPTION_ARTICLES_LIKE } from "../graphql/Subscription";
 

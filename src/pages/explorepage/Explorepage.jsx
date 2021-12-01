@@ -1,16 +1,17 @@
 // library
 import React, { useState, useEffect } from "react";
-// components
-import Emptylist from "../../components/emptylist/Emptylist";
-import Articlelist from "../../components/explorepage/Articlelist";
-import Footer from "../../components/footer/Footer";
-import Header from "../../components/header/Header";
-import LoadingSearching from "../../components/loading/LoadingSearching";
-import Navbar from "../../components/navbar/Navbar";
-import Searchbar from "../../components/serachBar/Searchbar";
-import useGetAllArticles from "../../hooks/useGetAllArticles";
 // css
 import "./Explorepage.css";
+// components
+import Emptylist from "../../components/EmptyList/Emptylist";
+import Articlelist from "../../components/Explore/Articlelist";
+import Footer from "../../components/Footer/Footer";
+import Header from "../../components/Header/Header";
+import LoadingSearching from "../../components/Loading/LoadingSearching";
+import Navbar from "../../components/Navbar/Navbar";
+import Searchbar from "../../components/SearchBar/Searchbar";
+// hooks
+import useGetAllArticles from "../../hooks/useGetAllArticles";
 
 export default function Explorepage() {
   // const [articles, setArticles] = useState(articleList);

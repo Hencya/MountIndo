@@ -7,20 +7,19 @@ import { useSelector } from "react-redux";
 // css
 import styles from "./Articlepage.module.css";
 // components
-import Footer from "../../components/footer/Footer";
-import Navbar from "../../components/navbar/Navbar";
-import Emptylist from "../../components/emptylist/Emptylist";
-import Comment from "../../components/articlepage/Comment";
-import CommentInput from "../../components/articlepage/CommentInput";
+import Footer from "../../components/Footer/Footer";
+import Navbar from "../../components/Navbar/Navbar";
+import Emptylist from "../../components/EmptyList/Emptylist";
+import Comment from "../../components/ArticleDetail/Comment";
+import CommentInput from "../../components/ArticleDetail/CommentInput";
 import useGetArticleById from "../../hooks/useGetArticleById";
-import Loading from "../../components/loading/Loading";
-import LoadingVerySmall from "../../components/loading/LoadingVerySmall";
+import Loading from "../../components/Loading/Loading";
+import LoadingVerySmall from "../../components/Loading/LoadingVerySmall";
 // hook
 import useGetCommentsByArticleId from "../../hooks/useGetCommentsByArticleId";
 import useUpdateLike from "../../hooks/useUpdateLike";
 import useLikeSubccription from "../../hooks/useLikeSubccription";
 import useInsertLikeTable from "../../hooks/useInsertLikeTable";
-import useGetLikeTableByUserAndArticleId from "../../hooks/useGetLikeTableByUserAndArticleId";
 import useDeleteLikeTable from "../../hooks/useDeleteLikeTable";
 
 export default function Articlepage() {

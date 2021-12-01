@@ -2,7 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 // css
-import styles from "../home/HomeSite.module.css";
+import styles from "../Home/HomeSite.module.css";
 
 export default function HomeSite() {
   return (

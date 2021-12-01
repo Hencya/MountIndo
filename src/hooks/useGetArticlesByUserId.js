@@ -1,4 +1,6 @@
+// library
 import { useQuery } from "@apollo/client";
+// graphql
 import { GET_ARTICLE_BY_USER_ID } from "../graphql/Query";
 
 export default function useGetArticlesByUserId(id) {

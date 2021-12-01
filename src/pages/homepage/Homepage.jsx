@@ -1,13 +1,16 @@
 // library
 import React, { useState, useEffect } from "react";
-import Emptylist from "../../components/emptylist/Emptylist";
+import Emptylist from "../../components/EmptyList/Emptylist";
+// css
+import "./HomePage.module.css";
 // component
-import Footer from "../../components/footer/Footer";
-import HomeSite from "../../components/home/HomeSite";
-import NewestArticles from "../../components/home/NewestArticles";
-import TrendingArticles from "../../components/home/TrendingArticles";
-import Loading from "../../components/loading/Loading";
-import Navbar from "../../components/navbar/Navbar";
+import Footer from "../../components/Footer/Footer";
+import HomeSite from "../../components/Home/HomeSite";
+import NewestArticles from "../../components/Home/NewestArticles";
+import TrendingArticles from "../../components/Home/TrendingArticles";
+import Loading from "../../components/Loading/Loading";
+import Navbar from "../../components/Navbar/Navbar";
+// hooks
 import useGetNewestArticles from "../../hooks/useGetNewestArticles";
 import useGetTrandingArticles from "../../hooks/useGetTrandingArticles";
 

@@ -1,26 +1,29 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 // library
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import moment from "moment";
 import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
 // css
-import styles from "./AddArticle.module.css";
+import styles from "./PostArticle.module.css";
 // firebase
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { app } from "../../config/firebase/firebase";
 // components
-import LoadingSmall from "../loading/LoadingSmall";
+import LoadingSmall from "../Loading/LoadingSmall";
+import Emptylist from "../EmptyList/Emptylist";
+import Loading from "../Loading/Loading";
+// hooks
 import useInsertArticle from "../../hooks/useInsertArticle";
 import useGetUserById from "../../hooks/useGetUserById";
-import Emptylist from "../emptylist/Emptylist";
 import useValidateForm from "../../hooks/useValidation";
-import Loading from "../loading/Loading";
 
-export default function AddArticle() {
+export default function PostArticle(props) {
   const navigate = useNavigate();
-
   const { validateForm } = useValidateForm();
+
+  const { status } = props;
+
   const authorId = useSelector((state) => state.auth.userId);
   const isLogin = useSelector((state) => state.auth.login);
   const author_avatar = useSelector((state) => state.auth.avatar);

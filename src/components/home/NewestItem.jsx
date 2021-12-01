@@ -2,7 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 // css
-import styles from "../home/NewestItem.module.css";
+import styles from "../Home/NewestItem.module.css";
 // import Blog1 from "../../assets/images/Blog-post/blog1.png";
 
 export default function NewestItem(props) {

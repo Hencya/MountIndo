@@ -1,9 +1,9 @@
 // library
 import React from "react";
-// component
-import Articleitem from "./Articleitem";
 // css
 import styles from "./Articlelist.module.css";
+// component
+import Articleitem from "./Articleitem";
 
 export default function Articlelist(props) {
   const { articles } = props;

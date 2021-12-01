@@ -2,13 +2,14 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 // component
-import Emptylist from "../../components/emptylist/Emptylist";
-import Footer from "../../components/footer/Footer";
-import Navbar from "../../components/navbar/Navbar";
-import ArticlelistProfile from "../../components/profile/ArticlelistProfile";
-import ProfileDetail from "../../components/profile/ProfileDetail";
+import Emptylist from "../../components/EmptyList/Emptylist";
+import Footer from "../../components/Footer/Footer";
+import Navbar from "../../components/Navbar/Navbar";
+import ArticlelistProfile from "../../components/Profile/ArticlelistProfile";
+import ProfileDetail from "../../components/Profile/ProfileDetail";
+import Loading from "../../components/Loading/Loading";
+// hooks
 import useGetArticlesByUserId from "../../hooks/useGetArticlesByUserId";
-import Loading from "../../components/loading/Loading";
 
 export default function Profilepage() {
   const authorId = useSelector((state) => state.auth.userId);
