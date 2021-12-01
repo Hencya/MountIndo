@@ -1,4 +1,6 @@
+// library
 import { useMutation } from "@apollo/client";
+// graphql
 import { INSERT_ARTICLE } from "../graphql/Mutation";
 import { GET_ALL_ARTICLES } from "../graphql/Query";
 

@@ -3,7 +3,7 @@ import React from "react";
 import { Icon } from "@iconify/react";
 import { NavLink, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-// Component
+// Assets
 import logoNav from "../../assets/images/LogoNavbar.png";
 
 export default function Navbar() {

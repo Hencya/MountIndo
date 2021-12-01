@@ -1,5 +1,6 @@
+// library
 import { useMutation } from "@apollo/client";
-
+// graphql
 import { INSERT_TABLE_LIKE } from "../graphql/Mutation";
 import { GET_ALL_TABLE_LIKE } from "../graphql/Query";
 

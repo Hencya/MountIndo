@@ -1,3 +1,4 @@
+// library
 import { gql } from "@apollo/client";
 
 export const INSERT_ARTICLE = gql`
