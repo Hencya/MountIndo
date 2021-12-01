@@ -63,3 +63,13 @@ export const DELETE_TABLE_LIKE = gql`
     }
   }
 `;
+
+export const DELETE_ARTICLE_BY_USER_AND_ARTICLE_ID = gql`
+  mutation MyMutation($id_user: Int!, $id: Int!) {
+    delete_MountIndo_Article(
+      where: { id_user: { _eq: $id_user }, id: { _eq: $id } }
+    ) {
+      affected_rows
+    }
+  }
+`;

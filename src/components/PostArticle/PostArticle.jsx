@@ -22,8 +22,6 @@ export default function PostArticle(props) {
   const navigate = useNavigate();
   const { validateForm } = useValidateForm();
 
-  const { status } = props;
-
   const authorId = useSelector((state) => state.auth.userId);
   const isLogin = useSelector((state) => state.auth.login);
   const author_avatar = useSelector((state) => state.auth.avatar);
