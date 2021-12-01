@@ -10,7 +10,7 @@ import ProfileDetail from "../../components/profile/ProfileDetail";
 import useGetArticlesByUserId from "../../hooks/useGetArticlesByUserId";
 import Loading from "../../components/loading/Loading";
 
-export default function Profilepage(props) {
+export default function Profilepage() {
   const authorId = useSelector((state) => state.auth.userId);
   const isLogin = useSelector((state) => state.auth.login);
 
@@ -19,9 +19,9 @@ export default function Profilepage(props) {
     loadingArticlesByUserId,
     errorArticlesByUserId,
   } = useGetArticlesByUserId(authorId);
+
   const [articles, setArticles] = useState([]);
 
-  console.log(dataArticlesByUserId);
   if (errorArticlesByUserId) {
     console.log(errorArticlesByUserId);
   }

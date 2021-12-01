@@ -14,62 +14,165 @@ import Comment from "../../components/articlepage/Comment";
 import CommentInput from "../../components/articlepage/CommentInput";
 import useGetArticleById from "../../hooks/useGetArticleById";
 import Loading from "../../components/loading/Loading";
+import LoadingVerySmall from "../../components/loading/LoadingVerySmall";
 // hook
 import useGetCommentsByArticleId from "../../hooks/useGetCommentsByArticleId";
+import useUpdateLike from "../../hooks/useUpdateLike";
+import useLikeSubccription from "../../hooks/useLikeSubccription";
+import useInsertLikeTable from "../../hooks/useInsertLikeTable";
+import useGetLikeTableByUserAndArticleId from "../../hooks/useGetLikeTableByUserAndArticleId";
+import useDeleteLikeTable from "../../hooks/useDeleteLikeTable";
 
 export default function Articlepage() {
-  // const [article, setArticle] = useState(null);
-
-  // useEffect(() => {
-  //   let article = articleList.find((article) => article.id === parseInt(id));
-  //   if (article) {
-  //     setArticle(article);
-  //   }
-  // }, [id]);
-
   const { id } = useParams();
   const currentUserId = useSelector((state) => state.auth.userId);
+  const isLogin = useSelector((state) => state.auth.login);
 
   const { dataAllComments, loadingAllComments, errorAllComments } =
     useGetCommentsByArticleId(id);
-  const { dataGetArticleById, loadingGetArticleById, errorGetArticleById } =
-    useGetArticleById(id);
+  // article
+  const {
+    updateLikeArticle,
+    loadingUpdateLikeArticle,
+    errorUpdateLikeArticle,
+  } = useUpdateLike();
+  const { dataLikeSubs, loadingLikeSubs, errorLikeSubs } =
+    useLikeSubccription(id);
+  const {
+    dataGetArticleById,
+    loadingGetArticleById,
+    errorGetArticleById,
+    subscribeLikes,
+  } = useGetArticleById(id);
+  // like table
+  const { dataGetTableLike, loadingGetTableLike, errorGetTableLike } =
+    useGetLikeTableByUserAndArticleId(currentUserId, id);
+  const { insertTableLike, loadingInsertTableLike, errorInsertATableLike } =
+    useInsertLikeTable();
+  const { deleteTableLike, loadingDeleteTableLike, errorDeleteTableLike } =
+    useDeleteLikeTable();
 
-  console.log(dataAllComments);
-
+  const [isLiked, setIsLiked] = useState(false);
+  const [tableLike, setTableLike] = useState();
   const [commentList, setCommentList] = useState([]);
   const [article, setArticle] = useState({});
 
-  if (errorGetArticleById) {
+  if (
+    errorGetArticleById ||
+    errorUpdateLikeArticle ||
+    errorLikeSubs ||
+    errorAllComments ||
+    errorGetArticleById ||
+    errorGetTableLike ||
+    errorDeleteTableLike ||
+    errorInsertATableLike
+  ) {
     console.log(errorGetArticleById);
+    console.log(errorLikeSubs);
+    console.log(errorUpdateLikeArticle);
+    console.log(errorAllComments);
+    console.log(errorGetArticleById);
+    console.log(errorGetTableLike);
+    console.log(errorDeleteTableLike);
+    console.log(errorInsertATableLike);
   }
 
   useEffect(() => {
-    if (!loadingGetArticleById && !loadingAllComments) {
-      if (dataGetArticleById) {
-        setArticle(dataGetArticleById?.MountIndo_Article_by_pk);
-      }
+    let mounted = true;
+    const onMount = () => {
+      if (
+        !loadingGetArticleById &&
+        !loadingAllComments &&
+        !loadingUpdateLikeArticle &&
+        !loadingLikeSubs &&
+        !loadingGetTableLike &&
+        !loadingInsertTableLike &&
+        !loadingDeleteTableLike
+      ) {
+        if (isLogin) {
+          subscribeLikes();
+          if (dataGetTableLike) {
+            setTableLike(dataGetTableLike?.MountIndo_Like);
+          }
+        }
+        if (dataGetArticleById) {
+          setArticle(dataGetArticleById?.MountIndo_Article_by_pk);
+        }
 
-      if (dataAllComments) {
-        setCommentList(dataAllComments?.MountIndo_Comment);
+        if (dataAllComments) {
+          setCommentList(dataAllComments?.MountIndo_Comment);
+        }
       }
-    }
+    };
+    if (mounted) onMount();
+    return () => {
+      mounted = false;
+    };
   }, [
     dataGetArticleById,
     loadingGetArticleById,
     dataAllComments,
     loadingAllComments,
+    loadingLikeSubs,
+    loadingUpdateLikeArticle,
+    subscribeLikes,
+    isLogin,
+    dataLikeSubs,
+    loadingGetTableLike,
+    loadingDeleteTableLike,
+    loadingInsertTableLike,
+    dataGetTableLike,
   ]);
 
-  if (errorAllComments || errorGetArticleById) {
-    console.log(errorAllComments);
-    console.log(errorGetArticleById);
-  }
+  console.log("Like", tableLike);
+  // console.log(
+  //   "article Likes",
+  //   dataGetArticleById?.MountIndo_Article_by_pk.like
+  // );
+  console.log("ini likes before click", dataLikeSubs?.MountIndo_Article_by_pk);
+  // console.log("subs likes click", dataLikeSubs?.MountIndo_Article_by_pk.like);
+
+  const onClickLike = () => {
+    const likes = dataLikeSubs?.MountIndo_Article_by_pk.like;
+    console.log("ini likes after click", likes);
+
+    if (isLiked) {
+      setIsLiked(false);
+      deleteTableLike({
+        variables: {
+          id_article: id,
+          id_user: currentUserId,
+        },
+      });
+
+      updateLikeArticle({
+        variables: {
+          id: id,
+          like: likes - 1,
+        },
+      });
+    } else {
+      setIsLiked(true);
+      insertTableLike({
+        variables: {
+          id_article: id,
+          id_user: currentUserId,
+        },
+      });
+
+      updateLikeArticle({
+        variables: {
+          id: id,
+          like: likes + 1,
+        },
+      });
+    }
+  };
 
   return (
     <section className={styles.articlePage}>
       <Navbar />
-      {loadingGetArticleById || loadingAllComments ? (
+      {loadingGetArticleById || loadingAllComments || loadingLikeSubs ? (
         <div className="">
           <Loading />
         </div>
@@ -102,12 +205,42 @@ export default function Articlepage() {
               <p className={`${styles.articleDesc}  `}>{article.description}</p>
               <div className="d-flex ms-auto mb-3 d-flex align-items-lg-center text-center w-100">
                 <h6 className="fw-bold mt-2">Likes</h6>
-                <Icon
-                  className="ms-3"
-                  icon="ant-design:heart-outlined"
-                  color="#ea2323"
-                  width="31"
-                />
+                {isLiked ? (
+                  <button
+                    className="p-0 border-0 bg-white"
+                    onClick={onClickLike}
+                    disabled={loadingUpdateLikeArticle || !isLogin}
+                  >
+                    <Icon
+                      className="ms-3 mt-1"
+                      icon="ant-design:heart-filled"
+                      color="#ea2323"
+                      width="31"
+                    />
+                  </button>
+                ) : (
+                  <button
+                    className="p-0 border-0 bg-white"
+                    onClick={onClickLike}
+                    disabled={loadingUpdateLikeArticle || !isLogin}
+                  >
+                    <Icon
+                      className="ms-3 mt-1"
+                      icon="ant-design:heart-outlined"
+                      color="#ea2323"
+                      width="31"
+                    />
+                  </button>
+                )}
+                {loadingUpdateLikeArticle || loadingLikeSubs ? (
+                  <div className="me-auto ">
+                    <LoadingVerySmall />
+                  </div>
+                ) : (
+                  <h6 className="ms-2 mt-2 my-0 ">
+                    {dataLikeSubs?.MountIndo_Article_by_pk.like}
+                  </h6>
+                )}
               </div>
 
               <div className="py-5">

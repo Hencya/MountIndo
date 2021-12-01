@@ -20,7 +20,7 @@ export default function ArticleitemProfile(props) {
         <h4 style={{ flex: 1, margin: "0.5rem 0 1rem 0" }}>{article.title}</h4>
         <div className="text-center">
           <Icon icon="ant-design:heart-filled" color="#ea2323" width="31" />
-          <p>123</p>
+          <p>{article.like}</p>
         </div>
       </div>
       <p className={`${styles.articleItemDesc}`}>{article.description}</p>

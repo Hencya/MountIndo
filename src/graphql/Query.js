@@ -103,3 +103,25 @@ export const GET_ARTICLE_BY_USER_ID = gql`
     }
   }
 `;
+
+export const GET_LIKE_TABLE_USER_AND_ARTICLE_ID = gql`
+  query MyQuery($id_article: Int!, $id_user: Int!) {
+    MountIndo_Like(
+      where: { id_article: { _eq: $id_article }, id_user: { _eq: $id_user } }
+    ) {
+      id
+      id_article
+      id_user
+    }
+  }
+`;
+
+export const GET_ALL_TABLE_LIKE = gql`
+  query MyQuery {
+    MountIndo_Like {
+      id
+      id_article
+      id_user
+    }
+  }
+`;
