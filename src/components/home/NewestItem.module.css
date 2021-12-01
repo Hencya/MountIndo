@@ -27,3 +27,15 @@
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
+
+@media (max-width: 376px) {
+  .blogContent {
+    width: 80%;
+  }
+}
+
+@media (max-width: 281px) {
+  .blogContent {
+    width: 55%;
+  }
+}
