@@ -14,44 +14,38 @@ import Searchbar from "../../components/SearchBar/Searchbar";
 import useGetAllArticles from "../../hooks/useGetAllArticles";
 
 export default function Explorepage() {
-  // const [articles, setArticles] = useState(articleList);
-  // const [searchKey, setSearchKey] = useState("");
-
-  // // Search submit
-  // const handleSearchBar = (e) => {
-  //   e.preventDefault();
-  //   handleSearchResults();
-  // };
-
-  // // Search for blog by category
-  // const handleSearchResults = () => {
-  //   const allArticles = articleList;
-  //   const filteredArticles = allArticles.filter((article) =>
-  //     article.category.toLowerCase().includes(searchKey.toLowerCase().trim())
-  //   );
-  //   setArticles(filteredArticles);
-  // };
-
-  // // Clear search and show all blogs
-  // const handleClearSearch = () => {
-  //   setArticles(articleList);
-  //   setSearchKey("");
-  // };
+  const [searchKey, setSearchKey] = useState("");
+  const [articles, setArticles] = useState([]);
 
   const { dataAllArticles, loadingGetAllArticles, errorGetAllArticles } =
     useGetAllArticles();
 
-  const [articles, setarticles] = useState([]);
-
-  useEffect(() => {
-    if (!loadingGetAllArticles && dataAllArticles) {
-      setarticles(dataAllArticles?.MountIndo_Article);
-    }
-  }, [dataAllArticles, loadingGetAllArticles]);
-
   if (errorGetAllArticles) {
     console.log(errorGetAllArticles);
   }
+
+  useEffect(() => {
+    if (!loadingGetAllArticles && dataAllArticles && searchKey === "") {
+      setArticles(dataAllArticles?.MountIndo_Article);
+    }
+  }, [dataAllArticles, loadingGetAllArticles, searchKey]);
+
+  const handleSearchBar = (e) => {
+    e.preventDefault();
+    handleSearchResults();
+  };
+
+  const handleSearchResults = () => {
+    const filteredArticles = articles.filter((article) =>
+      article.title.toLowerCase().includes(searchKey.toLowerCase().trim())
+    );
+    setArticles(filteredArticles);
+  };
+
+  const handleClearSearch = () => {
+    setArticles(dataAllArticles);
+    setSearchKey("");
+  };
 
   const titleH2 = "Find Your New Journey";
   const titleH1 = "Mountain";
@@ -62,12 +56,12 @@ export default function Explorepage() {
     <div className="Explorepage">
       <Navbar />
       <Header titleH1={titleH1} titleH2={titleH2} quote={quote} />
-      {/* <Searchbar
+      <Searchbar
         value={searchKey}
         clearSearch={handleClearSearch}
         formSubmit={handleSearchBar}
         handleSearchKey={(e) => setSearchKey(e.target.value)}
-      /> */}
+      />
       {!loadingGetAllArticles ? (
         <>
           {!articles.length ? (
