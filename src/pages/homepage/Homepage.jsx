@@ -52,23 +52,25 @@ export default function Homepage() {
     <section className="HomePage">
       <Navbar />
       <HomeSite />
-      {!loadingNewestArticles && dataNewestArticles ? (
+      {!loadingNewestArticles && dataNewestArticles && newestArticles ? (
         <>
-          {newestArticles.length === 0 ? (
-            <Emptylist message={"Articles Don't Exist"} />
-          ) : (
+          {newestArticles.length !== 0 ? (
             <NewestArticles articles={newestArticles} />
+          ) : (
+            <Emptylist message={"Articles Don't Exist"} />
           )}
         </>
       ) : (
         <Loading />
       )}
-      {!loadingGetTrandingArticles && dataGetTrandingArticles ? (
+      {!loadingGetTrandingArticles &&
+      dataGetTrandingArticles &&
+      trandingArticles ? (
         <>
-          {trandingArticles.length === 0 ? (
-            <Emptylist message={"Articles Don't Exist"} />
-          ) : (
+          {trandingArticles.length !== 0 ? (
             <TrendingArticles articles={trandingArticles} />
+          ) : (
+            <Emptylist message={"Articles Don't Exist"} />
           )}
         </>
       ) : (

@@ -32,11 +32,11 @@ export default function TrandingItem(props) {
               <span>
                 {article.comments > 1 ? (
                   <i className="fas fa-comment " style={{ color: "#C4C4C4" }}>
-                    &nbsp;&nbsp;{article.comments} Comments
+                    &nbsp;&nbsp;{article.comment} Comments
                   </i>
                 ) : (
                   <i className="fas fa-comment " style={{ color: "#C4C4C4" }}>
-                    &nbsp;&nbsp;{article.comments} Comment
+                    &nbsp;&nbsp;{article.comment} Comment
                   </i>
                 )}
               </span>

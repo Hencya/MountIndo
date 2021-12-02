@@ -54,6 +54,7 @@ export const GET_ARTICLE_BY_ID = gql`
       id_user
       image
       like
+      comment
       title
     }
   }
@@ -62,14 +63,10 @@ export const GET_ARTICLE_BY_ID = gql`
 export const GET_NEWEST_ARTICLES = gql`
   query MyQuery {
     MountIndo_Article(order_by: { created_at: desc }, limit: 5) {
-      author_avatar
-      author_name
       created_at
       description
       id
-      id_user
       image
-      like
       title
     }
   }
@@ -139,6 +136,7 @@ export const GET_TRANDING_ARTICLES = gql`
       id_user
       image
       like
+      comment
     }
   }
 `;
