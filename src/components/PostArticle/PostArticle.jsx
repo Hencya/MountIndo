@@ -12,10 +12,8 @@ import { app } from "../../config/firebase/firebase";
 // components
 import LoadingSmall from "../Loading/LoadingSmall";
 import Emptylist from "../EmptyList/Emptylist";
-import Loading from "../Loading/Loading";
 // hooks
 import useInsertArticle from "../../hooks/useInsertArticle";
-import useGetUserById from "../../hooks/useGetUserById";
 import useValidateForm from "../../hooks/useValidation";
 
 export default function PostArticle(props) {
@@ -30,18 +28,11 @@ export default function PostArticle(props) {
   const [loadingUpload, setLoadingUpload] = useState(false);
   const [isUpload, setIsUpload] = useState(false);
 
-  const { dataUser, loadingGetUserById, errorGetUserById } =
-    useGetUserById(authorId);
   const { insertArticle, loadingInsertArticle, errorInsertArticle } =
     useInsertArticle();
 
-  if (errorInsertArticle || errorGetUserById) {
+  if (errorInsertArticle) {
     console.log(errorInsertArticle);
-    console.log(errorGetUserById);
-  }
-
-  if (loadingGetUserById) {
-    <Loading />;
   }
 
   const createdAt = moment().format("LL");
