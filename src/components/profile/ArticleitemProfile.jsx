@@ -5,9 +5,10 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 // css
 import styles from "./ArticleitemProfile.module.css";
-import useDeleteArticleByUserId from "../../hooks/useDeleteArticleByUserId";
-import LoadingSmall from "../Loading/LoadingSmall";
 // component
+import LoadingSmall from "../Loading/LoadingSmall";
+// hooks
+import useDeleteArticleByUserId from "../../hooks/useDeleteArticleByUserId";
 
 export default function ArticleitemProfile(props) {
   const { article } = props;

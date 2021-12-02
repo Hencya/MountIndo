@@ -9,10 +9,12 @@ export default function Articlelist(props) {
   const { articles } = props;
 
   return (
-    <div className={`${styles.articleList}`}>
-      {articles.map((article) => (
-        <Articleitem article={article} />
-      ))}
+    <div className="d-flex justify-content-center">
+      <div className={`${styles.articleList}`}>
+        {articles.map((article) => (
+          <Articleitem article={article} />
+        ))}
+      </div>
     </div>
   );
 }

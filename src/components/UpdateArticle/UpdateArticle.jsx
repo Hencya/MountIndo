@@ -13,12 +13,9 @@ import { app } from "../../config/firebase/firebase";
 // components
 import LoadingSmall from "../Loading/LoadingSmall";
 import Emptylist from "../EmptyList/Emptylist";
-import Loading from "../Loading/Loading";
 // hooks
-
 import useValidateForm from "../../hooks/useValidation";
 import useUpdateArticleByUserId from "../../hooks/useUpdateArticleByUserId";
-import useGetArticleById from "../../hooks/useGetArticleById";
 
 export default function UpdateArticle(props) {
   const navigate = useNavigate();
@@ -32,28 +29,21 @@ export default function UpdateArticle(props) {
   const [loadingUpload, setLoadingUpload] = useState(false);
   const [isUpload, setIsUpload] = useState(false);
 
-  const { dataGetArticleById, loadingGetArticleById, errorGetArticleById } =
-    useGetArticleById(id);
   const {
     updateArticleById,
     loadingUpdateArticleById,
     errorUpdateArticleById,
   } = useUpdateArticleByUserId();
 
-  if (errorUpdateArticleById || errorGetArticleById) {
+  if (errorUpdateArticleById) {
     console.log(errorUpdateArticleById);
-    console.log(errorGetArticleById);
-  }
-
-  if (loadingGetArticleById) {
-    <Loading />;
   }
 
   const createdAt = moment().format("LL");
   const initialValue = {
-    title: dataGetArticleById?.MountIndo_Article_by_pk.title,
-    description: dataGetArticleById?.MountIndo_Article_by_pk.description,
-    image: dataGetArticleById?.MountIndo_Article_by_pk.image,
+    title: "",
+    description: "",
+    image: "",
     createdAt: createdAt,
   };
 
@@ -128,7 +118,7 @@ export default function UpdateArticle(props) {
     const validField = Object.keys(formUpdateArticle).filter(
       (key) => formUpdateArticle[key] !== ""
     );
-    if (validField.length < 3) {
+    if (validField.length < 4) {
       validateOnSubmit();
     } else {
       updateArticleById({
@@ -190,8 +180,8 @@ export default function UpdateArticle(props) {
                   id="floatingTextarea"
                 ></textarea>
                 <label for="floatingTextarea">Add Description</label>
-                {errorMessage.title ? (
-                  <p className="text-danger mt-2">{errorMessage.title}</p>
+                {errorMessage.description ? (
+                  <p className="text-danger mt-2">{errorMessage.description}</p>
                 ) : (
                   ""
                 )}

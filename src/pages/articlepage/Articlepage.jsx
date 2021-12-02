@@ -158,7 +158,7 @@ export default function Articlepage() {
       ) : (
         <>
           {article ? (
-            <div className={`${styles.articleWrap} pt-5`}>
+            <div className={`${styles.articleWrap} pt-5  `}>
               <Link className={`${styles.articleGoBack} pt-5`} to="/">
                 <span> &#8592;</span> <span>Go Back</span>
               </Link>

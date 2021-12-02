@@ -15,10 +15,12 @@ export default function ArticlelistProfile(props) {
           My Articles
         </h3>
       </div>
-      <div className={`${styles.articleList}`}>
-        {articles.map((article) => (
-          <ArticleitemProfile article={article} />
-        ))}
+      <div className="d-flex justify-content-center">
+        <div className={`${styles.articleList}`}>
+          {articles.map((article) => (
+            <ArticleitemProfile article={article} />
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -12,6 +12,7 @@ export default function useGetArticleById(id) {
     subscribeToMore,
   } = useQuery(GET_ARTICLE_BY_ID, {
     variables: { id },
+    awaitRefetchQueries: true,
     fetchPolicy: "network-only",
   });
 

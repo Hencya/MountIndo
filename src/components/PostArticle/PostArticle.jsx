@@ -118,7 +118,7 @@ export default function PostArticle(props) {
     const validField = Object.keys(formNewArticle).filter(
       (key) => formNewArticle[key] !== ""
     );
-    if (validField.length < 3) {
+    if (validField.length < 8) {
       validateOnSubmit();
     } else {
       insertArticle({
@@ -133,7 +133,9 @@ export default function PostArticle(props) {
           like: formNewArticle.like,
         },
       });
-      navigate("/profile");
+      if (!loadingInsertArticle) {
+        navigate("/profile");
+      }
     }
   };
 
@@ -180,8 +182,8 @@ export default function PostArticle(props) {
                   id="floatingTextarea"
                 ></textarea>
                 <label for="floatingTextarea">Add Description</label>
-                {errorMessage.title ? (
-                  <p className="text-danger mt-2">{errorMessage.title}</p>
+                {errorMessage.description ? (
+                  <p className="text-danger mt-2">{errorMessage.description}</p>
                 ) : (
                   ""
                 )}
