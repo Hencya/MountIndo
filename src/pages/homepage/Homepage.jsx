@@ -52,7 +52,7 @@ export default function Homepage() {
     <section className="HomePage">
       <Navbar />
       <HomeSite />
-      {!loadingNewestArticles ? (
+      {!loadingNewestArticles && dataNewestArticles ? (
         <>
           {newestArticles.length === 0 ? (
             <Emptylist message={"Articles Don't Exist"} />
@@ -63,7 +63,7 @@ export default function Homepage() {
       ) : (
         <Loading />
       )}
-      {!loadingGetTrandingArticles ? (
+      {!loadingGetTrandingArticles && dataGetTrandingArticles ? (
         <>
           {trandingArticles.length === 0 ? (
             <Emptylist message={"Articles Don't Exist"} />
