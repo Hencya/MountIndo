@@ -12,6 +12,7 @@ import Articlepage from "./pages/articlepage/Articlepage";
 import AddArticle from "./pages/addpage/Addpage.jsx";
 import Loginpage from "./pages/loginpage/Loginpage";
 import Profilepage from "./pages/profilepage/Profilepage";
+import UpdatePage from "./pages/updatepage/UpdatePage";
 import NotFoundPage from "./pages/notfoundpage/NotFoundPage";
 // graphql
 import client from "./config/apolo-client/apollo-client";
@@ -31,6 +32,11 @@ function App() {
               <Route path="/add-post" exact element={<AddArticle />} />
               <Route path="/login" exact element={<Loginpage />} />
               <Route path="/profile" exact element={<Profilepage />} />
+              <Route
+                path="/update-article/:id"
+                exact
+                element={<UpdatePage />}
+              />
               <Route path="*" exact element={<NotFoundPage />} />
             </Routes>
           </BrowserRouter>

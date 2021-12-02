@@ -73,3 +73,26 @@ export const DELETE_ARTICLE_BY_USER_AND_ARTICLE_ID = gql`
     }
   }
 `;
+
+export const UPDATE_ARTICLE_BY_USER_AND_ARTICLE_ID = gql`
+  mutation MyMutation(
+    $created_at: String!
+    $description: String!
+    $title: String!
+    $image: String!
+    $id_user: Int!
+    $id: Int!
+  ) {
+    update_MountIndo_Article(
+      where: { _and: { id_user: { _eq: $id_user }, id: { _eq: $id } } }
+      _set: {
+        created_at: $created_at
+        description: $description
+        title: $title
+        image: $image
+      }
+    ) {
+      affected_rows
+    }
+  }
+`;

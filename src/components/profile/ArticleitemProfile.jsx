@@ -2,10 +2,10 @@
 import React, { useEffect } from "react";
 import { Icon } from "@iconify/react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 // css
 import styles from "./ArticleitemProfile.module.css";
 import useDeleteArticleByUserId from "../../hooks/useDeleteArticleByUserId";
-import LoadingVerySmall from "../Loading/LoadingVerySmall";
 import LoadingSmall from "../Loading/LoadingSmall";
 // component
 
@@ -51,25 +51,40 @@ export default function ArticleitemProfile(props) {
             </div>
           </div>
           <p className={`${styles.articleItemDesc}`}>{article.description}</p>
-          <div className="text-end">
-            <Icon
-              icon="fa-solid:pen"
-              color="#c4c4c4"
-              width="18"
-              height="18"
-              className="align-self-end mb-3"
-              style={{ cursor: "pointer" }}
-            />
-            <Icon
-              icon="bi:trash-fill"
-              color="#c4c4c4"
-              width="18"
-              height="18"
-              onClick={onClickDelete}
-              className="align-self-end mb-3 ms-2"
-              style={{ cursor: "pointer" }}
-            />
-          </div>
+          <footer className={`${styles.footer}`}>
+            <div className={`${styles.articleItemAuthor}`}>
+              <Link to={`/article/${article.id}`}>
+                <button
+                  className={`${styles.postBtn} btn text-white `}
+                  style={{ backgroundColor: "#3086AC" }}
+                >
+                  Check
+                </button>
+              </Link>
+            </div>
+            <div className="text-end mt-3">
+              <Link to={`/update-article/${article.id}`}>
+                <Icon
+                  icon="fa-solid:pen"
+                  color="#c4c4c4"
+                  width="18"
+                  height="18"
+                  className="align-self-end mb-3"
+                  style={{ cursor: "pointer" }}
+                />
+              </Link>
+
+              <Icon
+                icon="bi:trash-fill"
+                color="#c4c4c4"
+                width="18"
+                height="18"
+                onClick={onClickDelete}
+                className="align-self-end mb-3 ms-2"
+                style={{ cursor: "pointer" }}
+              />
+            </div>
+          </footer>
         </>
       )}
     </div>

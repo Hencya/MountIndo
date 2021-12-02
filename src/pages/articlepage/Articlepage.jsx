@@ -12,10 +12,10 @@ import Navbar from "../../components/Navbar/Navbar";
 import Emptylist from "../../components/EmptyList/Emptylist";
 import Comment from "../../components/ArticleDetail/Comment";
 import CommentInput from "../../components/ArticleDetail/CommentInput";
-import useGetArticleById from "../../hooks/useGetArticleById";
 import Loading from "../../components/Loading/Loading";
 import LoadingVerySmall from "../../components/Loading/LoadingVerySmall";
 // hook
+import useGetArticleById from "../../hooks/useGetArticleById";
 import useGetCommentsByArticleId from "../../hooks/useGetCommentsByArticleId";
 import useUpdateLike from "../../hooks/useUpdateLike";
 import useLikeSubccription from "../../hooks/useLikeSubccription";
