@@ -17,5 +17,13 @@ export default function useValidateForm() {
     return messages;
   };
 
-  return { validateForm };
+  const validateComment = (name, value) => {
+    let messages = {};
+    if (name === "commentar" && value === "") {
+      messages = { [name]: "" };
+    }
+    return messages;
+  };
+
+  return { validateForm, validateComment };
 }

@@ -124,6 +124,20 @@ export const GET_ALL_TABLE_LIKE = gql`
   }
 `;
 
+export const GET_ALL_TABLE_COMMENT = gql`
+  query MyQuery {
+    MountIndo_Comment {
+      author_avatar
+      author_name
+      commentar
+      created_at
+      id
+      id_article
+      id_user
+    }
+  }
+`;
+
 export const GET_TRANDING_ARTICLES = gql`
   query MyQuery {
     MountIndo_Article(limit: 3, order_by: { like: desc }) {

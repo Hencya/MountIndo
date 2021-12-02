@@ -228,11 +228,12 @@ export default function Articlepage() {
                   <Comment currentUserId={currentUserId} comment={comment} />
                 ))}
               </div>
-
-              <div className="py-5">
-                <h5 className="fw-bolder">Add Comment</h5>
-                <CommentInput />
-              </div>
+              {isLogin && (
+                <div className="py-5">
+                  <h5 className="fw-bolder">Add Comment</h5>
+                  <CommentInput />
+                </div>
+              )}
             </div>
           ) : (
             <>

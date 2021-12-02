@@ -52,11 +52,57 @@ export const INSERT_TABLE_LIKE = gql`
   }
 `;
 
+export const INSERT_TABLE_COMMENT = gql`
+  mutation MyMutation(
+    $author_avatar: String!
+    $author_name: String!
+    $commentar: String!
+    $created_at: String!
+    $id_article: Int!
+    $id_user: Int!
+  ) {
+    insert_MountIndo_Comment_one(
+      object: {
+        author_avatar: $author_avatar
+        author_name: $author_name
+        commentar: $commentar
+        created_at: $created_at
+        id_article: $id_article
+        id_user: $id_user
+      }
+    ) {
+      id
+      id_user
+      id_article
+      created_at
+      commentar
+      author_name
+      author_avatar
+    }
+  }
+`;
+
 export const DELETE_TABLE_LIKE = gql`
   mutation MyMutation($id_article: Int!, $id_user: Int!) {
     delete_MountIndo_Like(
       where: {
         _and: { id_article: { _eq: $id_article }, id_user: { _eq: $id_user } }
+      }
+    ) {
+      affected_rows
+    }
+  }
+`;
+
+export const DELETE_TABLE_COMMENT = gql`
+  mutation MyMutation($id_article: Int!, $id_user: Int!, $id: Int!) {
+    delete_MountIndo_Comment(
+      where: {
+        _and: {
+          id_article: { _eq: $id_article }
+          id_user: { _eq: $id_user }
+          id: { _eq: $id }
+        }
       }
     ) {
       affected_rows
