@@ -1,7 +1,11 @@
+.articlePage {
+  height: 100vw;
+}
 .articleWrap {
   max-width: 1232px;
   margin: 0 auto;
   padding: 1rem 0;
+  width: 80%;
 }
 
 .articleGoBack {

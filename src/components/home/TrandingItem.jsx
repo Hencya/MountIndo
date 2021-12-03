@@ -3,8 +3,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 // css
 import styles from "./TrandingItem.module.css";
-// assets
-// import Blog1 from "../../assets/images/popular-post/m-blog-1.jpg";
 
 export default function TrandingItem(props) {
   const { article } = props;
@@ -15,30 +13,30 @@ export default function TrandingItem(props) {
           <div className={`${styles.postImage}`}>
             <div>
               <img
-                src={article.cover}
-                alt="trandingBlog1"
+                src={article.image}
+                alt="trandingArticle"
                 className={`${styles.img}`}
               />
             </div>
             <div className={`${styles.postInfo}`}>
               <span>
                 <i className="fas fa-user" style={{ color: "#C4C4C4" }}>
-                  &nbsp;&nbsp;{article.authorName}
+                  &nbsp;&nbsp;{article.author_name}
                 </i>
               </span>
               <span>
                 <i className="fas fa-calendar-alt" style={{ color: "#C4C4C4" }}>
-                  &nbsp;&nbsp;{article.createdAt}
+                  &nbsp;&nbsp;{article.created_at}
                 </i>
               </span>
               <span>
                 {article.comments > 1 ? (
                   <i className="fas fa-comment " style={{ color: "#C4C4C4" }}>
-                    &nbsp;&nbsp;{article.comments} Comments
+                    &nbsp;&nbsp;{article.comment} Comments
                   </i>
                 ) : (
                   <i className="fas fa-comment " style={{ color: "#C4C4C4" }}>
-                    &nbsp;&nbsp;{article.comments} Comment
+                    &nbsp;&nbsp;{article.comment} Comment
                   </i>
                 )}
               </span>
@@ -51,12 +49,11 @@ export default function TrandingItem(props) {
             >
               {article.title}
             </Link>
-            <p style={{ color: "#686666da" }}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
-              voluptas deserunt beatae adipisci iusto totam placeat corrupti
-              ipsum, tempora magnam incidunt aperiam tenetur a nobis, voluptate,
-              numquam architecto fugit. Eligendi quidem ipsam ducimus minus
-              magni illum similique veniam tempore unde?
+            <p
+              className={styles.articleItemDesc}
+              style={{ color: "#686666da" }}
+            >
+              {article.description}
             </p>
             <Link to={`/article/${article.id}`}>
               <button

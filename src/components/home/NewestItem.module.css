@@ -5,6 +5,7 @@
   width: 80%;
   margin: 3rem 2rem;
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
 }
 
 .blogTitle {
@@ -17,4 +18,24 @@
   border-color: #3086ac;
   color: #3086ac !important;
   font-weight: bold !important;
+}
+
+.image {
+  width: 300px;
+  height: 233px;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+@media (max-width: 376px) {
+  .blogContent {
+    width: 80%;
+  }
+}
+
+@media (max-width: 281px) {
+  .blogContent {
+    width: 55%;
+  }
 }

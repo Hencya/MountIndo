@@ -1,43 +1,54 @@
 // library
-import React, { useState } from "react";
-// components
-import Emptylist from "../../components/emptylist/Emptylist";
-import Articlelist from "../../components/explorepage/Articlelist";
-import Footer from "../../components/footer/Footer";
-import Header from "../../components/header/Header";
-import Navbar from "../../components/navbar/Navbar";
-import Searchbar from "../../components/serachBar/Searchbar";
-import { articleList } from "../../mockData";
+import React, { useState, useEffect } from "react";
 // css
 import "./Explorepage.css";
+// components
+import Emptylist from "../../components/EmptyList/Emptylist";
+import Articlelist from "../../components/Explore/Articlelist";
+import Footer from "../../components/Footer/Footer";
+import Header from "../../components/Header/Header";
+import LoadingSearching from "../../components/Loading/LoadingSearching";
+import Navbar from "../../components/Navbar/Navbar";
+import Searchbar from "../../components/SearchBar/Searchbar";
+// hooks
+import useGetAllArticles from "../../hooks/useGetAllArticles";
 
 export default function Explorepage() {
-  const [articles, setArticles] = useState(articleList);
   const [searchKey, setSearchKey] = useState("");
+  const [articles, setArticles] = useState([]);
 
-  // Search submit
+  const { dataAllArticles, loadingGetAllArticles, errorGetAllArticles } =
+    useGetAllArticles();
+
+  if (errorGetAllArticles) {
+    console.log(errorGetAllArticles);
+  }
+
+  useEffect(() => {
+    if (!loadingGetAllArticles && dataAllArticles && searchKey === "") {
+      setArticles(dataAllArticles?.MountIndo_Article);
+    }
+  }, [dataAllArticles, loadingGetAllArticles, searchKey]);
+
   const handleSearchBar = (e) => {
     e.preventDefault();
     handleSearchResults();
   };
 
-  // Search for blog by category
   const handleSearchResults = () => {
-    const allArticles = articleList;
-    const filteredArticles = allArticles.filter((article) =>
-      article.category.toLowerCase().includes(searchKey.toLowerCase().trim())
+    const filteredArticles = articles.filter((article) =>
+      article.title.toLowerCase().includes(searchKey.toLowerCase().trim())
     );
     setArticles(filteredArticles);
   };
 
-  // Clear search and show all blogs
   const handleClearSearch = () => {
-    setArticles(articleList);
+    setArticles(dataAllArticles);
     setSearchKey("");
   };
 
-  const titleH1 = "Find Your New Journey";
-  const titleH2 = "Mountain";
+  const titleH2 = "Find Your New Journey";
+  const titleH1 = "Mountain";
   const quote =
     "Jangan mengambil apa pun selain gambar, Jangan meninggalkan apa pun selain jejak. Jangan membunuh apa pun selain waktu";
 
@@ -51,8 +62,18 @@ export default function Explorepage() {
         formSubmit={handleSearchBar}
         handleSearchKey={(e) => setSearchKey(e.target.value)}
       />
-      {!articles.length ? <Emptylist /> : <Articlelist articles={articles} />}
-      <Footer />
+      {!loadingGetAllArticles ? (
+        <>
+          {!articles.length ? (
+            <Emptylist message={"Articles Don't Exist "} />
+          ) : (
+            <Articlelist articles={articles} />
+          )}
+          <Footer />
+        </>
+      ) : (
+        <LoadingSearching />
+      )}
     </div>
   );
 }

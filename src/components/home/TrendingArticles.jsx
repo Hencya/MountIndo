@@ -7,6 +7,7 @@ import TrandingItem from "./TrandingItem";
 
 export default function TrendingArticles(props) {
   const { articles } = props;
+
   return (
     <section className={`${styles.trandingtArticles}`}>
       <div className="container">
