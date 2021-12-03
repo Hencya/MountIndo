@@ -101,6 +101,7 @@ export default function CommentInput() {
           commentar: commentForm.commentar,
         },
       });
+      setCommentForm({ ...commentForm, commentar: "" });
       if (!loadingInsertTableComment) {
         window.location.reload();
       }

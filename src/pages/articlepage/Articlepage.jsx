@@ -71,33 +71,29 @@ export default function Articlepage() {
     console.log(errorInsertATableLike);
   }
 
-  useEffect(() => {
-    let mounted = true;
-    const onMount = () => {
-      if (
-        !loadingGetArticleById &&
-        !loadingAllComments &&
-        !loadingUpdateLikeArticle &&
-        !loadingLikeSubs &&
-        !loadingInsertTableLike &&
-        !loadingDeleteTableLike
-      ) {
-        if (isLogin) {
-          subscribeLikes();
-        }
-        if (dataGetArticleById) {
-          setArticle(dataGetArticleById?.MountIndo_Article_by_pk);
-        }
+  console.log(dataAllComments?.MountIndo_Comment);
 
-        if (dataAllComments) {
-          setCommentList(dataAllComments?.MountIndo_Comment);
-        }
+  useEffect(() => {
+    if (
+      !loadingGetArticleById &&
+      !loadingAllComments &&
+      !loadingUpdateLikeArticle &&
+      !loadingLikeSubs &&
+      !loadingInsertTableLike &&
+      !loadingDeleteTableLike
+    ) {
+      if (isLogin) {
+        subscribeLikes();
       }
-    };
-    if (mounted) onMount();
-    return () => {
-      mounted = false;
-    };
+
+      if (dataGetArticleById) {
+        setArticle(dataGetArticleById?.MountIndo_Article_by_pk);
+      }
+
+      if (dataAllComments) {
+        setCommentList(dataAllComments?.MountIndo_Comment);
+      }
+    }
   }, [
     dataGetArticleById,
     loadingGetArticleById,

@@ -12,7 +12,6 @@ import useDeleteArticleByUserId from "../../hooks/useDeleteArticleByUserId";
 
 export default function ArticleitemProfile(props) {
   const { article } = props;
-  const navigate = useNavigate();
 
   const { deleteArticle, loadingDeleteArticle, errorDeleteArticle } =
     useDeleteArticleByUserId();
@@ -20,12 +19,6 @@ export default function ArticleitemProfile(props) {
   if (errorDeleteArticle) {
     console.log(errorDeleteArticle);
   }
-
-  useEffect(() => {
-    if (!loadingDeleteArticle) {
-      navigate("/profile");
-    }
-  }, [loadingDeleteArticle, navigate]);
 
   const onClickDelete = () => {
     deleteArticle({ variables: { id_user: article.id_user, id: article.id } });

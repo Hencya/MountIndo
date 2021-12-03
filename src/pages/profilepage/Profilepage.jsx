@@ -35,8 +35,6 @@ export default function Profilepage() {
     }
   }, [loadingArticlesByUserId, dataArticlesByUserId]);
 
-
-
   return (
     <section className="ProfilePage">
       <Navbar />
