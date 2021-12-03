@@ -2,7 +2,7 @@
 import React from "react";
 import { Icon } from "@iconify/react";
 import useDeleteCommentTable from "../../hooks/useDeleteCommentTable";
-import LoadingSmall from "../Loading/LoadingSmall";
+import LoadingSmall from "../loading/LoadingSmall";
 
 export default function Comment(props) {
   const { comment, currentUserId } = props;

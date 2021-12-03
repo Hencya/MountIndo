@@ -8,7 +8,7 @@ import styles from "./Loginpage.module.css";
 import logoLogin from "../../assets/images/LogoNavbar.png";
 // components
 import useGetUsernameAndPassword from "../../hooks/useGetUsernamePasswordUser";
-import LoadingSmall from "../../components/Loading/LoadingSmall";
+import LoadingSmall from "../../components/loading/LoadingSmall";
 // redux
 import { login } from "../../config/redux/LoginSlice";
 

@@ -7,7 +7,7 @@ import Emptylist from "../../components/EmptyList/Emptylist";
 import Articlelist from "../../components/Explore/Articlelist";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
-import LoadingSearching from "../../components/Loading/LoadingSearching";
+import LoadingSearching from "../../components/loading/LoadingSearching";
 import Navbar from "../../components/Navbar/Navbar";
 import Searchbar from "../../components/SearchBar/Searchbar";
 // hooks

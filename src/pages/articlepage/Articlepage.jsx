@@ -12,8 +12,8 @@ import Navbar from "../../components/Navbar/Navbar";
 import Emptylist from "../../components/EmptyList/Emptylist";
 import Comment from "../../components/ArticleDetail/Comment";
 import CommentInput from "../../components/ArticleDetail/CommentInput";
-import Loading from "../../components/Loading/Loading";
-import LoadingVerySmall from "../../components/Loading/LoadingVerySmall";
+import Loading from "../../components/loading/Loading";
+import LoadingVerySmall from "../../components/loading/LoadingVerySmall";
 // hook
 import useGetArticleById from "../../hooks/useGetArticleById";
 import useGetCommentsByArticleId from "../../hooks/useGetCommentsByArticleId";

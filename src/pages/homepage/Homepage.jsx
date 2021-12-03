@@ -8,7 +8,7 @@ import Footer from "../../components/Footer/Footer";
 import HomeSite from "../../components/Home/HomeSite";
 import NewestArticles from "../../components/Home/NewestArticles";
 import TrendingArticles from "../../components/Home/TrendingArticles";
-import Loading from "../../components/Loading/Loading";
+import Loading from "../../components/loading/Loading";
 import Navbar from "../../components/Navbar/Navbar";
 // hooks
 import useGetNewestArticles from "../../hooks/useGetNewestArticles";

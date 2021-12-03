@@ -10,7 +10,7 @@ import styles from "./PostArticle.module.css";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { app } from "../../config/firebase/firebase";
 // components
-import LoadingSmall from "../Loading/LoadingSmall";
+import LoadingSmall from "../loading/LoadingSmall";
 import Emptylist from "../EmptyList/Emptylist";
 // hooks
 import useInsertArticle from "../../hooks/useInsertArticle";

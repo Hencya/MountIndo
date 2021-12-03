@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 // css
 import styles from "./ArticleitemProfile.module.css";
 // component
-import LoadingSmall from "../Loading/LoadingSmall";
+import LoadingSmall from "../loading/LoadingSmall";
 // hooks
 import useDeleteArticleByUserId from "../../hooks/useDeleteArticleByUserId";
 

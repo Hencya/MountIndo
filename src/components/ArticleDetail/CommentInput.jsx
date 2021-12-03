@@ -5,7 +5,7 @@ import moment from "moment";
 import { useParams } from "react-router";
 import { useSelector } from "react-redux";
 // commponent
-import LoadingVerySmall from "../Loading/LoadingVerySmall";
+import LoadingVerySmall from "../loading/LoadingVerySmall";
 // hooks
 import useValidateForm from "../../hooks/useValidation";
 import useInsertCommentTable from "../../hooks/useInsertCommentTable";

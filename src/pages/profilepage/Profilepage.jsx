@@ -7,7 +7,7 @@ import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
 import ArticlelistProfile from "../../components/Profile/ArticlelistProfile";
 import ProfileDetail from "../../components/Profile/ProfileDetail";
-import Loading from "../../components/Loading/Loading";
+import Loading from "../../components/loading/Loading";
 // hooks
 import useGetArticlesByUserId from "../../hooks/useGetArticlesByUserId";
 
